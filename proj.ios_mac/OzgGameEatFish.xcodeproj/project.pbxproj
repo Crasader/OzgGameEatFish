@@ -62,7 +62,6 @@
 		8949B6EF19C48E8600649103 /* PlayerFishNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8949B6DD19C48E8600649103 /* PlayerFishNode.cpp */; };
 		8949B6F019C48E8600649103 /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8949B6E119C48E8600649103 /* BaseLayer.cpp */; };
 		8949B6F119C48E8600649103 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8949B6E319C48E8600649103 /* GameLayer.cpp */; };
-		8949B6F219C48E8600649103 /* InitLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8949B6E519C48E8600649103 /* InitLayer.cpp */; };
 		8949B6F319C48E8600649103 /* StartLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8949B6E719C48E8600649103 /* StartLayer.cpp */; };
 		8949B71819C48F1A00649103 /* audios_bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8949B6F419C48F1A00649103 /* audios_bg.mp3 */; };
 		8949B71919C48F1A00649103 /* audios_btn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8949B6F519C48F1A00649103 /* audios_btn.wav */; };
@@ -311,8 +310,6 @@
 		8949B6E219C48E8600649103 /* BaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLayer.h; sourceTree = "<group>"; };
 		8949B6E319C48E8600649103 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
 		8949B6E419C48E8600649103 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
-		8949B6E519C48E8600649103 /* InitLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InitLayer.cpp; sourceTree = "<group>"; };
-		8949B6E619C48E8600649103 /* InitLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitLayer.h; sourceTree = "<group>"; };
 		8949B6E719C48E8600649103 /* StartLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartLayer.cpp; sourceTree = "<group>"; };
 		8949B6E819C48E8600649103 /* StartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartLayer.h; sourceTree = "<group>"; };
 		8949B6E919C48E8600649103 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
@@ -626,8 +623,6 @@
 				8949B6E219C48E8600649103 /* BaseLayer.h */,
 				8949B6E319C48E8600649103 /* GameLayer.cpp */,
 				8949B6E419C48E8600649103 /* GameLayer.h */,
-				8949B6E519C48E8600649103 /* InitLayer.cpp */,
-				8949B6E619C48E8600649103 /* InitLayer.h */,
 				8949B6E719C48E8600649103 /* StartLayer.cpp */,
 				8949B6E819C48E8600649103 /* StartLayer.h */,
 			);
@@ -878,7 +873,6 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				8949B6F219C48E8600649103 /* InitLayer.cpp in Sources */,
 				8949B6F019C48E8600649103 /* BaseLayer.cpp in Sources */,
 				8949B6EF19C48E8600649103 /* PlayerFishNode.cpp in Sources */,
 				8949B6EC19C48E8600649103 /* DialogNode.cpp in Sources */,
