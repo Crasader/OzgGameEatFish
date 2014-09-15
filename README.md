@@ -15,4 +15,4 @@ OzgGame—大鱼吃小鱼
 
 运行状况：
 
-![](https://raw.github.com/ouzhigang/OzgGameEatFish/master/screenshot.png)
+![](https://raw.github.com/ouzhigang/OzgGameEatFish/master/screenshot.jpg)
