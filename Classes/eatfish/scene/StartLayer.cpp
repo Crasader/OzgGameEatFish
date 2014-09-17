@@ -27,8 +27,6 @@ bool StartLayer::init()
 {
 	if (BaseLayer::init())
 	{
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Fishtales.plist");
-
 		Size winSize = Director::getInstance()->getWinSize();
 		
 		Sprite *bg = Sprite::create("bg1.png");
@@ -147,6 +145,8 @@ void StartLayer::helpVisible(bool visible)
     
 	if (visible)
 	{
+        SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Fishtales.plist");
+        
 		if (!help)
 		{
 			Size winSize = Director::getInstance()->getWinSize();
@@ -231,6 +231,9 @@ void StartLayer::helpVisible(bool visible)
         
         if (helpBtnBack)
 			helpBtnBack->removeFromParentAndCleanup(true);
+        
+        SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("Fishtales.plist");
+        Director::getInstance()->getTextureCache()->removeTextureForKey("Fishtales.png");
 	}
 
 }
