@@ -432,6 +432,8 @@ void GameLayer::update(float delay)
 								((EnemyFishNode*)targetObj)->cump();
 								player->removeFromParentAndCleanup(true);
 																
+                                this->enabledTouchEvent(false);
+                                
 								if (this->m_playerLife == 0)
 								{
                                     this->unscheduleUpdate();
