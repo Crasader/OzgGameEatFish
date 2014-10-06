@@ -127,19 +127,14 @@ bool GameLayer::init()
 		progressBg->setTag((int)ChildTag::PROGRESS_BG);
 		this->addChild(progressBg);
 
-        //进度条使用Sprite是因为旧的版本这样做，以后会改好
 		//关卡进度条
-		Sprite *progress = Sprite::create("progressk.png");
-		progress->setPosition(Vec2(80, 594));
-		progress->setTag((int)ChildTag::PROGRESS);
-		progress->setAnchorPoint(Vec2(0, 0.5));
-		progress->setPosition(Vec2(progress->getPosition().x - (progress->getContentSize().width / 2), progress->getPosition().y));
-		progress->setScaleX(0);
-		this->addChild(progress);
-
-		//test
-		//progress->setScaleX(0.29);
-		//progress->setScaleX(0.61);
+        ProgressTimer *progress = ProgressTimer::create(Sprite::create("progressk.png"));
+        progress->setBarChangeRate(Vec2(1, 0)); //设置进度条的长度和高度开始变化的大小
+        progress->setType(ProgressTimer::Type::BAR); //设置进度条为水平
+        progress->setMidpoint(Vec2(0, 0));
+        progress->setPosition(Vec2(80, 594));
+        progress->setTag((int)ChildTag::PROGRESS);
+        this->addChild(progress);
 
 		Sprite *fishLife = Sprite::createWithSpriteFrameName("fishlife.png");
 		fishLife->setPosition(Vec2(70, 550));
@@ -340,8 +335,8 @@ void GameLayer::update(float delay)
 
 							//关卡进度条
 							float cpProgress = (float)this->m_eatFishTotal / (float)GAME_CONFIG_STAGE_CLEAR;
-							Sprite *progress = (Sprite*)this->getChildByTag((int)ChildTag::PROGRESS);
-							progress->setScaleX(cpProgress);
+							ProgressTimer *progress = (ProgressTimer*)this->getChildByTag((int)ChildTag::PROGRESS);
+                            progress->setPercentage(cpProgress * 100.0f);
 
 							if (cpProgress >= 1)
 							{
@@ -786,8 +781,8 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     this->m_eatFishTotalType3 = 0;
                     this->m_eatFishTotalType4 = 0;
                     
-                    Sprite *progress = (Sprite*)this->getChildByTag((int)ChildTag::PROGRESS);
-                    progress->setScaleX(0);
+                    ProgressTimer *progress = (ProgressTimer*)this->getChildByTag((int)ChildTag::PROGRESS);
+                    progress->setPercentage(0);
                     
                     Node *clearNode = this->getChildByTag((int)ChildTag::CLEAR_NODE);
                     clearNode->removeFromParentAndCleanup(true);
@@ -824,8 +819,8 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     Label *fishLifeLab = (Label*)this->getChildByTag((int)ChildTag::LAB_FISH_LIFE);
                     fishLifeLab->setString(StringUtils::format("%i", this->m_playerLife).c_str());
                     
-                    Sprite *progress = (Sprite*)this->getChildByTag((int)ChildTag::PROGRESS);
-                    progress->setScaleX(0);
+                    ProgressTimer *progress = (ProgressTimer*)this->getChildByTag((int)ChildTag::PROGRESS);
+                    progress->setPercentage(0);
                     
                     Node *gameoverNode = this->getChildByTag((int)ChildTag::GAMEOVER_NODE);
                     gameoverNode->removeFromParentAndCleanup(true);
