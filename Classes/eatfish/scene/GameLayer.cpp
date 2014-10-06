@@ -513,6 +513,112 @@ void GameLayer::enemyFishMoveEnd(cocos2d::Node* sender)
 
 }
 
+void GameLayer::scenePause()
+{
+    Node *fishNode = this->getChildByTag((int)ChildTag::FISH_NODE);
+    if(fishNode)
+    {
+        Vector<Node*> nodeList = fishNode->getChildren();
+        Vector<Node*>::iterator it = nodeList.begin();
+        while(it != nodeList.end())
+        {
+            Node *fish = *it;
+            Vector<Node*> fishChildren = fish->getChildren();
+            Vector<Node*>::iterator it2 = fishChildren.begin();
+            while(it2 != fishChildren.end())
+            {
+                Node *fishChild = *it2;
+                fishChild->pause();
+                
+                it2++;
+            }
+            
+            fish->pause();
+            
+            it++;
+        }
+    }
+    
+    this->unscheduleUpdate();
+    
+    Size winSize = Director::getInstance()->getWinSize();
+    
+    this->enabledTouchEvent(false);
+    
+    //暂停界面
+    
+    Sprite *pauseBg = Sprite::createWithSpriteFrameName("pausebg.png");
+    pauseBg->setPosition(Vec2(pauseBg->getContentSize().width / 2, pauseBg->getContentSize().height / 2));
+    
+    Node *pauseNode = Node::create();
+    pauseNode->setAnchorPoint(Vec2(0.5, 0.5));
+    pauseNode->setContentSize(pauseBg->getContentSize());
+    pauseNode->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
+    pauseNode->setTag((int)ChildTag::PAUSE_NODE);
+    this->addChild(pauseNode);
+    
+    pauseNode->addChild(pauseBg);
+    
+    Button *btnResume = Button::create();
+    btnResume->loadTextureNormal("btn1_up.png");
+    btnResume->loadTexturePressed("btn1_dw.png");
+    btnResume->setPosition(Vec2(180, 370));
+    btnResume->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
+    btnResume->setTag((int)ChildTag::BTN_RESUME);
+    btnResume->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
+    btnResume->setTitleFontSize(22.0f);
+    btnResume->setTitleText(STRINGS_PAUSE_RESUME);
+    pauseNode->addChild(btnResume);
+    
+    Button *btnSound = Button::create();
+    btnSound->loadTextureNormal("btn1_up.png");
+    btnSound->loadTexturePressed("btn1_dw.png");
+    btnSound->setPosition(Vec2(180, 264));
+    btnSound->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
+    btnSound->setTag((int)ChildTag::BTN_SOUND);
+    btnSound->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
+    btnSound->setTitleFontSize(22.0f);
+    
+    if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_BGSOUND, true))
+        btnSound->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_OFF));
+    else
+        btnSound->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_ON));
+    
+    pauseNode->addChild(btnSound);
+    
+    Button *btnEffect = Button::create();
+    btnEffect->loadTextureNormal("btn1_up.png");
+    btnEffect->loadTexturePressed("btn1_dw.png");
+    btnEffect->setPosition(Vec2(180, 157));
+    btnEffect->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
+    btnEffect->setTag((int)ChildTag::BTN_EFFECT);
+    btnEffect->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
+    btnEffect->setTitleFontSize(22.0f);
+    
+    if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_EFFECT, true))
+        btnEffect->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_OFF));
+    else
+        btnEffect->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_ON));
+    
+    pauseNode->addChild(btnEffect);
+    
+    Button *btnExit = Button::create();
+    btnExit->loadTextureNormal("btn1_up.png");
+    btnExit->loadTexturePressed("btn1_dw.png");
+    btnExit->setPosition(Vec2(180, 50));
+    btnExit->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
+    btnExit->setTag((int)ChildTag::BTN_EXIT);
+    btnExit->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
+    btnExit->setTitleFontSize(22.0f);
+    btnExit->setTitleText(STRINGS_PAUSE_EXIT);
+    pauseNode->addChild(btnExit);
+    
+    Label *labGithub = Label::createWithSystemFont("github:https://github.com/ouzhigang/OzgGameEatFish", GAME_CONFIG_GLOBAL_FONTNAME_01, 20);
+    labGithub->setPosition(Vec2(650, 210));
+    pauseNode->addChild(labGithub);
+    
+}
+
 //private
 void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType eventType)
 {
@@ -535,108 +641,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     //暂停游戏
                     SimpleAudioEngine::getInstance()->playEffect("audios_btn.wav");
                     
-                    Node *fishNode = this->getChildByTag((int)ChildTag::FISH_NODE);
-                    if(fishNode)
-                    {
-                        Vector<Node*> nodeList = fishNode->getChildren();
-                        Vector<Node*>::iterator it = nodeList.begin();
-                        while(it != nodeList.end())
-                        {
-                            Node *fish = *it;
-                            Vector<Node*> fishChildren = fish->getChildren();
-                            Vector<Node*>::iterator it2 = fishChildren.begin();
-                            while(it2 != fishChildren.end())
-                            {
-                                Node *fishChild = *it2;
-                                fishChild->pause();
-                                
-                                it2++;
-                            }
-                            
-                            fish->pause();
-                            
-                            it++;
-                        }
-                    }
-                    
-                    this->unscheduleUpdate();
-                    
-                    Size winSize = Director::getInstance()->getWinSize();
-                    
-                    this->enabledTouchEvent(false);
-                    
-                    //暂停界面
-                    
-                    Sprite *pauseBg = Sprite::createWithSpriteFrameName("pausebg.png");
-                    pauseBg->setPosition(Vec2(pauseBg->getContentSize().width / 2, pauseBg->getContentSize().height / 2));
-                    
-                    Node *pauseNode = Node::create();
-                    pauseNode->setAnchorPoint(Vec2(0.5, 0.5));
-                    pauseNode->setContentSize(pauseBg->getContentSize());
-                    pauseNode->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
-                    pauseNode->setTag((int)ChildTag::PAUSE_NODE);
-                    this->addChild(pauseNode);
-                    
-                    pauseNode->addChild(pauseBg);
-                    
-                    Button *btnResume = Button::create();
-                    btnResume->loadTextureNormal("btn1_up.png");
-                    btnResume->loadTexturePressed("btn1_dw.png");
-                    btnResume->setPosition(Vec2(180, 370));
-                    btnResume->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
-                    btnResume->setTag((int)ChildTag::BTN_RESUME);
-                    btnResume->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
-                    btnResume->setTitleFontSize(22.0f);
-                    btnResume->setTitleText(STRINGS_PAUSE_RESUME);
-                    pauseNode->addChild(btnResume);
-                    
-                    Button *btnSound = Button::create();
-                    btnSound->loadTextureNormal("btn1_up.png");
-                    btnSound->loadTexturePressed("btn1_dw.png");
-                    btnSound->setPosition(Vec2(180, 264));
-                    btnSound->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
-                    btnSound->setTag((int)ChildTag::BTN_SOUND);
-                    btnSound->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
-                    btnSound->setTitleFontSize(22.0f);
-                    
-                    if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_BGSOUND, true))
-                        btnSound->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_OFF));
-                    else
-                        btnSound->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_ON));
-                    
-                    pauseNode->addChild(btnSound);
-                    
-                    Button *btnEffect = Button::create();
-                    btnEffect->loadTextureNormal("btn1_up.png");
-                    btnEffect->loadTexturePressed("btn1_dw.png");
-                    btnEffect->setPosition(Vec2(180, 157));
-                    btnEffect->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
-                    btnEffect->setTag((int)ChildTag::BTN_EFFECT);
-                    btnEffect->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
-                    btnEffect->setTitleFontSize(22.0f);
-                    
-                    if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_EFFECT, true))
-                        btnEffect->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_OFF));
-                    else
-                        btnEffect->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_ON));
-                    
-                    pauseNode->addChild(btnEffect);
-                    
-                    Button *btnExit = Button::create();
-                    btnExit->loadTextureNormal("btn1_up.png");
-                    btnExit->loadTexturePressed("btn1_dw.png");
-                    btnExit->setPosition(Vec2(180, 50));
-                    btnExit->addTouchEventListener(CC_CALLBACK_2(GameLayer::onButton, this));
-                    btnExit->setTag((int)ChildTag::BTN_EXIT);
-                    btnExit->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
-                    btnExit->setTitleFontSize(22.0f);
-                    btnExit->setTitleText(STRINGS_PAUSE_EXIT);
-                    pauseNode->addChild(btnExit);
-                    
-                    Label *labGithub = Label::createWithSystemFont("github:https://github.com/ouzhigang/ozggame_eat_fish", GAME_CONFIG_GLOBAL_FONTNAME_01, 20);
-                    labGithub->setPosition(Vec2(650, 210));
-                    pauseNode->addChild(labGithub);
-                    
+                    this->scenePause();                    
                 }
                     break;
                 case ((int)ChildTag::BTN_RESUME):

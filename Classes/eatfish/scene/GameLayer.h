@@ -94,6 +94,9 @@ public:
 	void update(float delay);
 
 	void enemyFishMoveEnd(cocos2d::Node* sender);
+    
+    void scenePause();
+    
 };
 
 #endif

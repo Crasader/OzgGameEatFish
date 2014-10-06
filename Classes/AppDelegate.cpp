@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "StartLayer.h"
+#include "GameLayer.h"
 #include "GameConfig.h"
 #include "Strings.h"
 
@@ -59,7 +60,15 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    
+    Scene *s = Director::getInstance()->getRunningScene();
+    
+    if(dynamic_cast<eatfish::scene::GameLayer*>(s->getChildren().at(0)) != NULL)
+    {
+        eatfish::scene::GameLayer *layer = (eatfish::scene::GameLayer*)s->getChildren().at(0);
+        layer->scenePause();
+    }
 }
 
 // this function will be called when the app is active again
@@ -67,5 +76,5 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
