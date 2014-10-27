@@ -810,7 +810,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     //重新开始
                     
                     this->m_score = 0;
-                    this->m_stageNum = 0;
+                    this->m_stageNum = 1;
                     this->m_playerLife = GAME_CONFIG_PLAYERS;
                     this->m_eatFish = 0;
                     this->m_eatFishTotal = 0;
