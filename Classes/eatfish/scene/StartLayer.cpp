@@ -7,7 +7,6 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace CocosDenshion;
-using namespace cocostudio;
 using namespace ui;
 using namespace eatfish::scene;
 

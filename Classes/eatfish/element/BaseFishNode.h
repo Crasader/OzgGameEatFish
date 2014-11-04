@@ -2,6 +2,7 @@
 #define __OzgGameEatFish__BaseFishNode__
 
 #include "cocos2d.h"
+#include "SimpleAudioEngine.h"
 
 namespace eatfish
 {

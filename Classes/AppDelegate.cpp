@@ -3,6 +3,7 @@
 #include "GameLayer.h"
 #include "GameConfig.h"
 #include "Strings.h"
+#include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
 
@@ -21,7 +22,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create(STRINGS_TITLE);
+		glview = GLViewImpl::create(STRINGS_TITLE);
 		glview->setFrameSize(960, 640);
         director->setOpenGLView(glview);
     }

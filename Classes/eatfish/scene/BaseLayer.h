@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "ui/CocosGUI.h"
+#include "SimpleAudioEngine.h"
 
 namespace eatfish
 {

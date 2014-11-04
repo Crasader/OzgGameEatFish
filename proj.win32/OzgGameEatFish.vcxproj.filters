@@ -4,93 +4,95 @@
     <Filter Include="win32">
       <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
     <Filter Include="resource">
       <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\eatfish">
-      <UniqueIdentifier>{3caceda7-594b-44db-9123-157de304ed48}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\eatfish\element">
-      <UniqueIdentifier>{9e546398-9179-4f0d-bbab-2ff5bc43eab7}</UniqueIdentifier>
+    <Filter Include="eatfish">
+      <UniqueIdentifier>{77d4211c-13cf-48df-8a76-99413e4da964}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\eatfish\scene">
-      <UniqueIdentifier>{a762be67-519c-43e0-9691-2251e6938f6e}</UniqueIdentifier>
+    <Filter Include="eatfish\element">
+      <UniqueIdentifier>{6a742dc0-fbb4-4978-ae74-4cc0a1d6b7c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="eatfish\scene">
+      <UniqueIdentifier>{5b9008bc-e999-4ba1-a727-1df2eef9fe46}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\eatfish\element\BaseEnemyFishNode.cpp">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\element\BaseFishNode.cpp">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\element\DialogNode.cpp">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\element\EnemyFishNode.cpp">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\element\JellyfishNode.cpp">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\element\PlayerFishNode.cpp">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\scene\BaseLayer.cpp">
-      <Filter>Classes\eatfish\scene</Filter>
+      <Filter>eatfish\scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\scene\GameLayer.cpp">
-      <Filter>Classes\eatfish\scene</Filter>
+      <Filter>eatfish\scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\scene\StartLayer.cpp">
-      <Filter>Classes\eatfish\scene</Filter>
+      <Filter>eatfish\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>Classes</Filter>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\eatfish\GameConfig.h">
+      <Filter>eatfish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\Strings.h">
+      <Filter>eatfish</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\BaseEnemyFishNode.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\BaseFishNode.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\DialogNode.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\EnemyFishNode.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\FishData.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\JellyfishNode.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\PlayerFishNode.h">
-      <Filter>Classes\eatfish\element</Filter>
+      <Filter>eatfish\element</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\scene\BaseLayer.h">
-      <Filter>Classes\eatfish\scene</Filter>
+      <Filter>eatfish\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\scene\GameLayer.h">
-      <Filter>Classes\eatfish\scene</Filter>
+      <Filter>eatfish\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\scene\StartLayer.h">
-      <Filter>Classes\eatfish\scene</Filter>
+      <Filter>eatfish\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
