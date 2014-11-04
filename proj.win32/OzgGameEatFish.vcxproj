@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Classes\eatfish;..\Classes\eatfish\scene;..\Classes\eatfish\element;$(EngineRoot);$(EngineRoot)cocos;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)cocos\editor-support\cocostudio;$(EngineRoot)cocos\editor-support;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)cocos\editor-support\cocostudio;$(EngineRoot)cocos\editor-support;$(EngineRoot)cocos;..\Classes\eatfish\scene;..\Classes\eatfish\element;..\Classes\eatfish;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -156,11 +156,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\eatfish\element\FishData.h" />
     <ClInclude Include="..\Classes\eatfish\element\JellyfishNode.h" />
     <ClInclude Include="..\Classes\eatfish\element\PlayerFishNode.h" />
-    <ClInclude Include="..\Classes\eatfish\GameConfig.h" />
     <ClInclude Include="..\Classes\eatfish\scene\BaseLayer.h" />
     <ClInclude Include="..\Classes\eatfish\scene\GameLayer.h" />
     <ClInclude Include="..\Classes\eatfish\scene\StartLayer.h" />
-    <ClInclude Include="..\Classes\eatfish\Strings.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
