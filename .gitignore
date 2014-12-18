@@ -1,0 +1,13 @@
+
+proj.android/gen/
+proj.android/bin/
+proj.android/libs/
+proj.android/obj/
+proj.android/assets/
+
+proj.win32/OzgGameEatFish.sdf
+proj.win32/OzgGameEatFish.v12.suo
+proj.win32/Debug.win32/
+
+bin/
+cocos2d/
