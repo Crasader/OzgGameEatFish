@@ -9,6 +9,10 @@ OzgGame—大鱼吃小鱼
 
 win32、ios、mac、android（真机可运行）编译通过。win32环境下需要将Classes文件夹下的所有文件转换为GBK编码。android编译命令，cocos compile -p android -j 4
 
+
+win32编译前，需要在vs里面将libui项目以下的文件删除：UIWebViewImpl-win32.h、UIWebViewImpl-win32.cpp、UIEditBox/UIEditBoxImplWin.h、UIEditBox/UIEditBoxImplWin.cpp、UIEditBox/Win32InputBox.h、UIEditBox/Win32InputBox.cpp。在UIEditBox下面添加UIEditBoxImpl-win32.h和UIEditBoxImpl-win32.cpp
+
+
 目前只做了英文版
 
 本游戏的cocos2d-iphone版本：https://github.com/ouzhigang/ozggame_eat_fish
