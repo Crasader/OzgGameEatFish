@@ -514,7 +514,7 @@ void GameLayer::enemyFishMoveEnd(cocos2d::Node* sender)
 
 void GameLayer::scenePause()
 {
-    if(this->getChildByTag((int)ChildTag::PAUSE_NODE))
+    if(this->getChildByTag((int)ChildTag::PAUSE_NODE) || this->getChildByTag((int)ChildTag::GAMEOVER_NODE) || this->getChildByTag((int)ChildTag::CLEAR_NODE))
         return;
     
     Node *fishNode = this->getChildByTag((int)ChildTag::FISH_NODE);

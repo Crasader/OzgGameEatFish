@@ -69,18 +69,23 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
+    
+    Scene *s = Director::getInstance()->getRunningScene();
+    for (int i = 0; i < (int)s->getChildren().size(); i++)
+    {
+        if(dynamic_cast<eatfish::scene::GameLayer*>(s->getChildren().at(i)) != NULL)
+        {
+            eatfish::scene::GameLayer *layer = (eatfish::scene::GameLayer*)s->getChildren().at(i);
+            layer->scenePause();
+            break;
+        }
+    }
+    
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-	
-	Scene *s = Director::getInstance()->getRunningScene();
     
-    if(dynamic_cast<eatfish::scene::GameLayer*>(s->getChildren().at(0)) != NULL)
-    {
-        eatfish::scene::GameLayer *layer = (eatfish::scene::GameLayer*)s->getChildren().at(0);
-        layer->scenePause();
-    }
 }
 
 // this function will be called when the app is active again
