@@ -518,6 +518,11 @@ void GameLayer::scenePause()
         return;
     
     Node *fishNode = this->getChildByTag((int)ChildTag::FISH_NODE);
+    
+    //如果player不存在也不会执行暂停
+    if(!fishNode->getChildByTag((int)ChildTag::FISH_PLAYER))
+        return;
+    
     if(fishNode)
     {
         Vector<Node*> nodeList = fishNode->getChildren();
