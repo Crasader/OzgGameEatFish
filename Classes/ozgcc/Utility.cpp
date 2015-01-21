@@ -7,7 +7,7 @@ using namespace ozgcc;
 
 unsigned int Utility::rangeInt(unsigned int min, unsigned int max)
 {
-	unsigned int x = abs((rand() * time(NULL) % (max - min)));
+	unsigned int x = abs((int)(rand() * time(NULL) % (max - min)));
 	x += min;
 	return x;
 }

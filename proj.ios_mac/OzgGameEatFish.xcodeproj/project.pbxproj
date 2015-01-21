@@ -141,6 +141,11 @@
 		898D73121A41D15F0059F4D6 /* JellyfishNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 898D73051A41D15F0059F4D6 /* JellyfishNode.cpp */; };
 		898D73131A41D15F0059F4D6 /* PlayerFishNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 898D73071A41D15F0059F4D6 /* PlayerFishNode.cpp */; };
 		898D73141A41D15F0059F4D6 /* PlayerFishNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 898D73071A41D15F0059F4D6 /* PlayerFishNode.cpp */; };
+		89D655E01A6FFE00001040A9 /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89D655DE1A6FFE00001040A9 /* Utility.cpp */; };
+		89D655E11A6FFE00001040A9 /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89D655DE1A6FFE00001040A9 /* Utility.cpp */; };
+		89D655E41A6FFF95001040A9 /* Strings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89D655E21A6FFF95001040A9 /* Strings.cpp */; };
+		89D655E51A6FFF95001040A9 /* Strings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89D655E21A6FFF95001040A9 /* Strings.cpp */; };
+		89D655E81A700252001040A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D655EA1A700252001040A9 /* InfoPlist.strings */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -263,7 +268,6 @@
 		890F4A3E1A41D29D0041DCF7 /* Fishtales.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Fishtales.plist; sourceTree = "<group>"; };
 		890F4A3F1A41D29D0041DCF7 /* Fishtales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishtales.png; sourceTree = "<group>"; };
 		898D72EE1A41D13A0059F4D6 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameConfig.h; path = eatfish/GameConfig.h; sourceTree = "<group>"; };
-		898D72EF1A41D13A0059F4D6 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = eatfish/Strings.h; sourceTree = "<group>"; };
 		898D72F01A41D14E0059F4D6 /* BaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseLayer.cpp; path = eatfish/scene/BaseLayer.cpp; sourceTree = "<group>"; };
 		898D72F11A41D14E0059F4D6 /* BaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseLayer.h; path = eatfish/scene/BaseLayer.h; sourceTree = "<group>"; };
 		898D72F21A41D14E0059F4D6 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameLayer.cpp; path = eatfish/scene/GameLayer.cpp; sourceTree = "<group>"; };
@@ -283,6 +287,12 @@
 		898D73061A41D15F0059F4D6 /* JellyfishNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JellyfishNode.h; path = eatfish/element/JellyfishNode.h; sourceTree = "<group>"; };
 		898D73071A41D15F0059F4D6 /* PlayerFishNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerFishNode.cpp; path = eatfish/element/PlayerFishNode.cpp; sourceTree = "<group>"; };
 		898D73081A41D15F0059F4D6 /* PlayerFishNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerFishNode.h; path = eatfish/element/PlayerFishNode.h; sourceTree = "<group>"; };
+		89D655DE1A6FFE00001040A9 /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utility.cpp; sourceTree = "<group>"; };
+		89D655DF1A6FFE00001040A9 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		89D655E21A6FFF95001040A9 /* Strings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Strings.cpp; path = eatfish/Strings.cpp; sourceTree = "<group>"; };
+		89D655E31A6FFF95001040A9 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = eatfish/Strings.h; sourceTree = "<group>"; };
+		89D655E91A700252001040A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89D655EB1A70028D001040A9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -342,6 +352,7 @@
 				503AE0FD17EB989F00D1A890 /* Prefix.pch */,
 				503AE0FE17EB989F00D1A890 /* RootViewController.h */,
 				503AE0FF17EB989F00D1A890 /* RootViewController.mm */,
+				89D655EA1A700252001040A9 /* InfoPlist.strings */,
 			);
 			name = ios;
 			path = Classes;
@@ -450,6 +461,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				89D655DD1A6FFE00001040A9 /* ozgcc */,
 				898D72EB1A41D0DE0059F4D6 /* eatfish */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
@@ -508,8 +520,9 @@
 		898D72EB1A41D0DE0059F4D6 /* eatfish */ = {
 			isa = PBXGroup;
 			children = (
+				89D655E21A6FFF95001040A9 /* Strings.cpp */,
+				89D655E31A6FFF95001040A9 /* Strings.h */,
 				898D72EE1A41D13A0059F4D6 /* GameConfig.h */,
-				898D72EF1A41D13A0059F4D6 /* Strings.h */,
 				898D72ED1A41D0FD0059F4D6 /* scene */,
 				898D72EC1A41D0ED0059F4D6 /* element */,
 			);
@@ -547,6 +560,15 @@
 				898D72F51A41D14E0059F4D6 /* StartLayer.h */,
 			);
 			name = scene;
+			sourceTree = "<group>";
+		};
+		89D655DD1A6FFE00001040A9 /* ozgcc */ = {
+			isa = PBXGroup;
+			children = (
+				89D655DE1A6FFE00001040A9 /* Utility.cpp */,
+				89D655DF1A6FFE00001040A9 /* Utility.h */,
+			);
+			path = ozgcc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +632,7 @@
 				Japanese,
 				French,
 				German,
+				"zh-Hans",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -659,6 +682,7 @@
 				890F4A561A41D29D0041DCF7 /* bg2.png in Resources */,
 				890F4A211A41D27A0041DCF7 /* progressk.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				89D655E81A700252001040A9 /* InfoPlist.strings in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				890F4A461A41D29D0041DCF7 /* audios_eatfish1.mp3 in Resources */,
 				890F4A701A41D29D0041DCF7 /* dialog_btn_yes_2.png in Resources */,
@@ -761,10 +785,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D655E01A6FFE00001040A9 /* Utility.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				898D72F61A41D14E0059F4D6 /* BaseLayer.cpp in Sources */,
 				898D730B1A41D15F0059F4D6 /* BaseFishNode.cpp in Sources */,
+				89D655E41A6FFF95001040A9 /* Strings.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				898D72FA1A41D14E0059F4D6 /* StartLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -781,9 +807,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D655E11A6FFE00001040A9 /* Utility.cpp in Sources */,
 				898D72FB1A41D14E0059F4D6 /* StartLayer.cpp in Sources */,
 				898D730C1A41D15F0059F4D6 /* BaseFishNode.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				89D655E51A6FFF95001040A9 /* Strings.cpp in Sources */,
 				898D72F91A41D14E0059F4D6 /* GameLayer.cpp in Sources */,
 				898D73101A41D15F0059F4D6 /* EnemyFishNode.cpp in Sources */,
 				898D730A1A41D15F0059F4D6 /* BaseEnemyFishNode.cpp in Sources */,
@@ -809,6 +837,19 @@
 			targetProxy = 1AC6FB24180E99E1004C840B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		89D655EA1A700252001040A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89D655E91A700252001040A9 /* en */,
+				89D655EB1A70028D001040A9 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			path = ios;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
