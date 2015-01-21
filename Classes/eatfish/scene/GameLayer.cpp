@@ -7,6 +7,7 @@
 #include "DialogNode.h"
 #include "GameConfig.h"
 #include "Strings.h"
+#include "Utility.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -15,6 +16,7 @@ using namespace CocosDenshion;
 using namespace ui;
 using namespace eatfish::scene;
 using namespace eatfish::element;
+using namespace ozgcc;
 
 GameLayer::~GameLayer()
 {
@@ -73,7 +75,7 @@ bool GameLayer::init()
 		bgList.push_back("bg1.png");
 		
 		//背景
-		int i = CCRANDOM_0_1() * (bgList.size() - 1);
+		int i = Utility::rangeInt(0, bgList.size() - 1);
 		this->m_bg = bgList.at(i);
 		Sprite *bg = Sprite::create(this->m_bg.c_str());
 		bg->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
@@ -191,14 +193,12 @@ void GameLayer::update(float delay)
 		float minVal = enemyFishNode->getContentSize().width / 2;
 		float maxVal = winSize.width - (enemyFishNode->getContentSize().width / 2);
 
-		float srcX = maxVal - minVal;
-		srcX = minVal + (srcX * CCRANDOM_0_1());
+		float srcX = Utility::randomFloat(minVal, maxVal);
 
 		enemyFishNode->setPosition(Vec2(srcX, -enemyFishNode->getContentSize().height / 2));
 		fishNode->addChild(enemyFishNode);
 
-		float moveTime = 15.0 - 10.0;
-		moveTime = 10.0 + (moveTime * CCRANDOM_0_1());
+		float moveTime = Utility::randomFloat(10.0, 15.0);
 
 		enemyFishNode->runAction(Sequence::createWithTwoActions(MoveTo::create(moveTime, Vec2(srcX, winSize.height + (enemyFishNode->getContentSize().height / 2))), CallFuncN::create(CC_CALLBACK_1(GameLayer::enemyFishMoveEnd, this))));
 
@@ -1011,8 +1011,7 @@ void GameLayer::enemyFishEmergence(BaseFishNode* enemyFishNode)
 	enemyFishNode->setPosition(startPoint);
 	fishNode->addChild(enemyFishNode);
 
-	float moveTime = 20.0 - 10.0;
-	moveTime = 10.0 + (moveTime * CCRANDOM_0_1());
+	float moveTime = Utility::randomFloat(10.0, 20.0);
 
 	((BaseEnemyFishNode*)enemyFishNode)->m_isMoving = true; //执行action需要强制设置成YES
 	((BaseEnemyFishNode*)enemyFishNode)->m_moveTime = moveTime;
@@ -1031,8 +1030,7 @@ Vec2 GameLayer::enemyFishRandomLeftPoint(BaseFishNode* enemyFishNode)
 	float minY = enemyFishNode->centerRect().size.height / 2;
 	float maxY = winSize.height - minY;
 
-	float val = maxY - minY;
-	float y = minY + (val * CCRANDOM_0_1());
+	float y = Utility::randomFloat(minY, maxY);
 	return Vec2(x, y);
 }
 
@@ -1043,9 +1041,8 @@ Vec2 GameLayer::enemyFishRandomRightPoint(BaseFishNode* enemyFishNode)
 	float x = winSize.width + (enemyFishNode->getContentSize().width / 2);
 	float minY = enemyFishNode->centerRect().size.height / 2;
 	float maxY = winSize.height - minY;
-
-	float val = maxY - minY;
-	float y = minY + (val * CCRANDOM_0_1());
+		
+	float y = Utility::randomFloat(minY, maxY);
 	return Vec2(x, y);
 }
 
