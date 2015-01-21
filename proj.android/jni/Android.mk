@@ -26,6 +26,7 @@ FILE_LIST += $(filter %.cpp, $(ALLFILES))
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/ozgcc
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/eatfish
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/eatfish/element
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/eatfish/scene

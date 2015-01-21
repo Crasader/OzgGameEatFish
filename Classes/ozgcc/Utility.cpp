@@ -7,15 +7,9 @@ using namespace ozgcc;
 
 unsigned int Utility::rangeInt(unsigned int min, unsigned int max)
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 	unsigned int x = abs((rand() * time(NULL) % (max - min)));
 	x += min;
 	return x;
-#else
-	unsigned int x = abs((int)((random() * time(NULL) % (max - min))));
-	x += min;
-	return x;
-#endif
 }
 
 void Utility::randomSeed(int seed)

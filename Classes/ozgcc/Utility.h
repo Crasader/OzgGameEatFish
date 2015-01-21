@@ -23,7 +23,7 @@ cout << stringToNumber<int>(str) << endl;
 template <class Type>
 Type stringToNumber(const std::string& str)
 {
-	istringstream iss(str);
+	std::istringstream iss(str);
 	Type num;
 	iss >> num;
 	return num;
