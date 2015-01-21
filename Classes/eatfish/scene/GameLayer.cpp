@@ -99,13 +99,13 @@ bool GameLayer::init()
 		this->addChild(fishNode);
 
 		//右上角的部分
-		Label *stageNumLab = Label::create(StringUtils::format(STRINGS_GAME_SCENE_LAB_STAGE_NUM, this->m_stageNum).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(200, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+		Label *stageNumLab = Label::create(StringUtils::format(this->m_strings["game_scene_lab_stage_num"].c_str(), this->m_stageNum).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(200, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
 		stageNumLab->setPosition(Vec2(winSize.width - 100, winSize.height - 24));
 		stageNumLab->setTag((int)ChildTag::LAB_STAGE_NUM);
 		stageNumLab->enableOutline(Color4B::BLACK, 2);
 		this->addChild(stageNumLab);
 
-		Label *scoreLab = Label::create(StringUtils::format(STRINGS_GAME_SCENE_LAB_SCORE, this->m_score).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(200, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+		Label *scoreLab = Label::create(StringUtils::format(this->m_strings["game_scene_lab_score"].c_str(), this->m_score).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(200, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
 		scoreLab->setPosition(Vec2(winSize.width - 100, winSize.height - 56));
 		scoreLab->setTag((int)ChildTag::LAB_SCORE);
 		scoreLab->enableOutline(Color4B::BLACK, 2);
@@ -364,7 +364,7 @@ void GameLayer::update(float delay)
                                 fishNum->setPosition(clearNode->getContentSize().width / 2, clearNode->getContentSize().height / 2);
                                 clearNode->addChild(fishNum);
                                 
-                                Label *title = Label::createWithSystemFont(STRINGS_CLEAR_TITLE, GAME_CONFIG_GLOBAL_FONTNAME_01, 50);
+                                Label *title = Label::createWithSystemFont(this->m_strings["clear_title"], GAME_CONFIG_GLOBAL_FONTNAME_01, 50);
                                 title->setPosition(Vec2(clearNode->getContentSize().width / 2, 470));
                                 clearNode->addChild(title);
                                 
@@ -388,7 +388,7 @@ void GameLayer::update(float delay)
                                 btnExit->setTag((int)ChildTag::BTN_EXIT);
                                 btnExit->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
                                 btnExit->setTitleFontSize(22.0f);
-                                btnExit->setTitleText(STRINGS_CLEAR_EXIT);
+                                btnExit->setTitleText(this->m_strings["clear_exit"]);
                                 clearNode->addChild(btnExit);
                                 
                                 Button *btnNext = Button::create();
@@ -399,7 +399,7 @@ void GameLayer::update(float delay)
                                 btnNext->setTag((int)ChildTag::BTN_NEXT);
                                 btnNext->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
                                 btnNext->setTitleFontSize(22.0f);
-                                btnNext->setTitleText(STRINGS_CLEAR_NEXT);
+                                btnNext->setTitleText(this->m_strings["clear_next"]);
                                 clearNode->addChild(btnNext);
                                 
 							}
@@ -452,11 +452,11 @@ void GameLayer::update(float delay)
                                     
                                     gameoverNode->addChild(gameoverBg);
                                     
-                                    Label *title = Label::createWithSystemFont(STRINGS_GAMEOVER_TITLE, GAME_CONFIG_GLOBAL_FONTNAME_01, 50);
+                                    Label *title = Label::createWithSystemFont(this->m_strings["gameover_title"], GAME_CONFIG_GLOBAL_FONTNAME_01, 50);
                                     title->setPosition(Vec2(gameoverNode->getContentSize().width / 2, 430));
                                     gameoverNode->addChild(title);
                                     
-                                    Label *content = Label::createWithSystemFont(STRINGS_GAMEOVER_CONTENT, GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
+                                    Label *content = Label::createWithSystemFont(this->m_strings["gameover_content"], GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
                                     content->setPosition(Vec2(gameoverNode->getContentSize().width / 2, 350));
                                     gameoverNode->addChild(content);
                                     
@@ -468,7 +468,7 @@ void GameLayer::update(float delay)
                                     btnExit->setTag((int)ChildTag::BTN_EXIT);
                                     btnExit->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
                                     btnExit->setTitleFontSize(22.0f);
-                                    btnExit->setTitleText(STRINGS_GAMEOVER_EXIT);
+                                    btnExit->setTitleText(this->m_strings["gameover_exit"]);
                                     gameoverNode->addChild(btnExit);
                                     
                                     Button *btnRestart = Button::create();
@@ -479,7 +479,7 @@ void GameLayer::update(float delay)
                                     btnRestart->setTag((int)ChildTag::BTN_RESTART);
                                     btnRestart->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
                                     btnRestart->setTitleFontSize(22.0f);
-                                    btnRestart->setTitleText(STRINGS_GAMEOVER_RESTART);
+                                    btnRestart->setTitleText(this->m_strings["gameover_restart"]);
                                     gameoverNode->addChild(btnRestart);
                                     
 								}
@@ -574,7 +574,7 @@ void GameLayer::scenePause()
     btnResume->setTag((int)ChildTag::BTN_RESUME);
     btnResume->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
     btnResume->setTitleFontSize(22.0f);
-    btnResume->setTitleText(STRINGS_PAUSE_RESUME);
+    btnResume->setTitleText(this->m_strings["pause_resume"]);
     pauseNode->addChild(btnResume);
     
     Button *btnSound = Button::create();
@@ -587,9 +587,9 @@ void GameLayer::scenePause()
     btnSound->setTitleFontSize(22.0f);
     
     if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_BGSOUND, true))
-        btnSound->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_OFF));
+        btnSound->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_sound"].c_str(), this->m_strings["pause_off"].c_str()));
     else
-        btnSound->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_ON));
+		btnSound->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_sound"].c_str(), this->m_strings["pause_on"].c_str()));
     
     pauseNode->addChild(btnSound);
     
@@ -603,9 +603,9 @@ void GameLayer::scenePause()
     btnEffect->setTitleFontSize(22.0f);
     
     if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_EFFECT, true))
-        btnEffect->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_OFF));
+		btnEffect->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_effect"].c_str(), this->m_strings["pause_off"].c_str()));
     else
-        btnEffect->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_ON));
+		btnEffect->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_effect"].c_str(), this->m_strings["pause_on"].c_str()));
     
     pauseNode->addChild(btnEffect);
     
@@ -617,7 +617,7 @@ void GameLayer::scenePause()
     btnExit->setTag((int)ChildTag::BTN_EXIT);
     btnExit->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
     btnExit->setTitleFontSize(22.0f);
-    btnExit->setTitleText(STRINGS_PAUSE_EXIT);
+    btnExit->setTitleText(this->m_strings["pause_exit"]);
     pauseNode->addChild(btnExit);
     
     Label *labGithub = Label::createWithSystemFont("github:https://github.com/ouzhigang/OzgGameEatFish", GAME_CONFIG_GLOBAL_FONTNAME_01, 20);
@@ -697,13 +697,13 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     {
                         SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0);
                         UserDefault::getInstance()->setBoolForKey(GAME_CONFIG_BGSOUND, true);
-                        btn->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_OFF));
+						btn->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_sound"].c_str(), this->m_strings["pause_off"].c_str()));
                     }
                     else
                     {
                         SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.0);
                         UserDefault::getInstance()->setBoolForKey(GAME_CONFIG_BGSOUND, false);
-                        btn->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_SOUND, STRINGS_PAUSE_ON));
+						btn->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_sound"].c_str(), this->m_strings["pause_on"].c_str()));
                     }
                     
                 }
@@ -715,13 +715,13 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     {
                         SimpleAudioEngine::getInstance()->setEffectsVolume(1.0);
                         UserDefault::getInstance()->setBoolForKey(GAME_CONFIG_EFFECT, true);
-                        btn->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_OFF));
+						btn->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_effect"].c_str(), this->m_strings["pause_off"].c_str()));
                     }
                     else
                     {
                         SimpleAudioEngine::getInstance()->setEffectsVolume(0.0);
                         UserDefault::getInstance()->setBoolForKey(GAME_CONFIG_EFFECT, false);
-                        btn->setTitleText(StringUtils::format("%s(%s)", STRINGS_PAUSE_EFFECT, STRINGS_PAUSE_ON));
+						btn->setTitleText(StringUtils::format("%s(%s)", this->m_strings["pause_effect"].c_str(), this->m_strings["pause_on"].c_str()));
                     }
                     
                 }
@@ -771,7 +771,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                         btnRestart->setEnabled(false);
                     }
                     
-                    DialogNode *dialog = DialogNode::create(STRINGS_TITLE, STRINGS_SETTINGS_EXIT_DIALOG, STRINGS_DIALOG_BTN_NO, CallFuncN::create(CC_CALLBACK_1(GameLayer::onDialogBtnNo, this)), STRINGS_DIALOG_BTN_YES, CallFuncN::create(CC_CALLBACK_1(GameLayer::onDialogBtnYes, this)));
+                    DialogNode *dialog = DialogNode::create(this->m_strings["title"], this->m_strings["settings_exit_dialog"], this->m_strings["dialog_btn_no"], CallFuncN::create(CC_CALLBACK_1(GameLayer::onDialogBtnNo, this)), this->m_strings["dialog_btn_yes"], CallFuncN::create(CC_CALLBACK_1(GameLayer::onDialogBtnYes, this)));
 					dialog->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2);
 					this->addChild(dialog);
                 }
@@ -785,7 +785,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                         this->m_stageNum = GAME_CONFIG_MAX_STAGE;
                     
                     Label *stageNumLab = (Label*)this->getChildByTag((int)ChildTag::LAB_STAGE_NUM);
-                    stageNumLab->setString(StringUtils::format(STRINGS_GAME_SCENE_LAB_STAGE_NUM, this->m_stageNum));
+                    stageNumLab->setString(StringUtils::format(this->m_strings["game_scene_lab_stage_num"].c_str(), this->m_stageNum));
                     
                     this->m_eatFish = 0;
                     this->m_eatFishTotal = 0;
@@ -823,10 +823,10 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     this->m_eatFishTotalType4 = 0;
                     
                     Label *stageNumLab = (Label*)this->getChildByTag((int)ChildTag::LAB_STAGE_NUM);
-                    stageNumLab->setString(StringUtils::format(STRINGS_GAME_SCENE_LAB_STAGE_NUM, this->m_stageNum));
+                    stageNumLab->setString(StringUtils::format(this->m_strings["game_scene_lab_stage_num"].c_str(), this->m_stageNum));
                     
                     Label *scoreLab = (Label*)this->getChildByTag((int)ChildTag::LAB_SCORE);
-                    scoreLab->setString(StringUtils::format(STRINGS_GAME_SCENE_LAB_SCORE, this->m_score).c_str());
+                    scoreLab->setString(StringUtils::format(this->m_strings["game_scene_lab_score"].c_str(), this->m_score).c_str());
                     
                     Label *fishLifeLab = (Label*)this->getChildByTag((int)ChildTag::LAB_FISH_LIFE);
                     fishLifeLab->setString(StringUtils::format("%i", this->m_playerLife).c_str());
@@ -1094,7 +1094,7 @@ void GameLayer::changeScore(EnemyFishNode::EnemyFishType type)
 		this->m_eatFishTotal = GAME_CONFIG_MAX_SCORE;
     
 	Label *scoreLab = (Label*)this->getChildByTag((int)ChildTag::LAB_SCORE);
-	scoreLab->setString(StringUtils::format(STRINGS_GAME_SCENE_LAB_SCORE, this->m_score).c_str());
+	scoreLab->setString(StringUtils::format(this->m_strings["game_scene_lab_score"].c_str(), this->m_score).c_str());
 }
 
 //private

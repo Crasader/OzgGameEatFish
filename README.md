@@ -13,8 +13,6 @@ win32、ios、mac、android（真机可运行）编译通过。win32环境下需
 win32编译前，需要在vs里面将libui项目以下的文件删除：UIWidgets/UIWebViewImpl-win32.h、UIWidgets/UIWebViewImpl-win32.cpp、UIWidgets/UIEditBox/UIEditBoxImplWin.h、UIWidgets/UIEditBox/UIEditBoxImplWin.cpp、UIWidgets/UIEditBox/Win32InputBox.h、UIWidgets/UIEditBox/Win32InputBox.cpp。在UIWidgets/UIEditBox下面添加UIEditBoxImpl-win32.h和UIEditBoxImpl-win32.cpp
 
 
-目前只做了英文版
-
 本游戏的cocos2d-iphone版本：https://github.com/ouzhigang/ozggame_eat_fish
 
 本游戏的cocos2d-js版本：https://github.com/ouzhigang/OzgGameEatFishJS

@@ -73,7 +73,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)cocos;$(EngineRoot)cocos\audio\include;$(EngineRoot)cocos\ui;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..\Classes\eatfish;..\Classes\eatfish\scene;..\Classes\eatfish\element;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)cocos;$(EngineRoot)cocos\audio\include;$(EngineRoot)cocos\ui;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..\Classes\ozgcc;..\Classes\eatfish;..\Classes\eatfish\scene;..\Classes\eatfish\element;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -147,6 +147,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\eatfish\scene\BaseLayer.cpp" />
     <ClCompile Include="..\Classes\eatfish\scene\GameLayer.cpp" />
     <ClCompile Include="..\Classes\eatfish\scene\StartLayer.cpp" />
+    <ClCompile Include="..\Classes\eatfish\Strings.cpp" />
+    <ClCompile Include="..\Classes\ozgcc\Utility.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +165,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\eatfish\scene\GameLayer.h" />
     <ClInclude Include="..\Classes\eatfish\scene\StartLayer.h" />
     <ClInclude Include="..\Classes\eatfish\Strings.h" />
+    <ClInclude Include="..\Classes\ozgcc\Utility.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

@@ -46,7 +46,7 @@ bool StartLayer::init()
 		btnStart->setTag((int)ChildTag::BTN_START);
 		btnStart->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
 		btnStart->setTitleFontSize(32.0f);
-		btnStart->setTitleText(STRINGS_START_SCENE_BTN_START);
+		btnStart->setTitleText(this->m_strings["start_scene_btn_start"]);
 		this->addChild(btnStart);
 
 		Button *btnHelp = Button::create();
@@ -57,7 +57,7 @@ bool StartLayer::init()
 		btnHelp->setTag((int)ChildTag::BTN_HELP);
 		btnHelp->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
 		btnHelp->setTitleFontSize(32.0f);
-		btnHelp->setTitleText(STRINGS_START_SCENE_BTN_HELP);
+		btnHelp->setTitleText(this->m_strings["start_scene_btn_help"]);
 		this->addChild(btnHelp);
 
 		return true;
@@ -159,7 +159,7 @@ void StartLayer::helpVisible(bool visible)
         //title
         if(!helpTitle)
         {
-            helpTitle = Label::createWithSystemFont(STRINGS_HELP_TITLE, GAME_CONFIG_GLOBAL_FONTNAME_02, 36);
+            helpTitle = Label::createWithSystemFont(this->m_strings["help_title"], GAME_CONFIG_GLOBAL_FONTNAME_02, 36);
             helpTitle->setTag((int)ChildTag::HELP_TITLE);
             helpTitle->setPosition(Vec2(480, 535));
             helpTitle->setTextColor(Color4B(255, 255, 0, 255));
@@ -169,7 +169,7 @@ void StartLayer::helpVisible(bool visible)
         //lab1
         if(!helpLab1)
         {
-            helpLab1 = Label::createWithSystemFont(STRINGS_HELP_LAB1, GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
+			helpLab1 = Label::createWithSystemFont(this->m_strings["help_lab1"], GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
             helpLab1->setTag((int)ChildTag::HELP_LAB1);
             helpLab1->setPosition(Vec2(480, 385));
             helpLab1->setTextColor(Color4B(255, 255, 255, 255));
@@ -179,7 +179,7 @@ void StartLayer::helpVisible(bool visible)
         //lab2
         if(!helpLab2)
         {
-            helpLab2 = Label::createWithSystemFont(STRINGS_HELP_LAB2, GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
+			helpLab2 = Label::createWithSystemFont(this->m_strings["help_lab2"], GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
             helpLab2->setTag((int)ChildTag::HELP_LAB2);
             helpLab2->setPosition(Vec2(480, 245));
             helpLab2->setTextColor(Color4B(255, 255, 255, 255));
@@ -189,7 +189,7 @@ void StartLayer::helpVisible(bool visible)
         //lab3
         if(!helpLab3)
         {
-            helpLab3 = Label::createWithSystemFont(STRINGS_HELP_LAB3, GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
+			helpLab3 = Label::createWithSystemFont(this->m_strings["help_lab3"], GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
             helpLab3->setTag((int)ChildTag::HELP_LAB3);
             helpLab3->setPosition(Vec2(480, 105));
             helpLab3->setTextColor(Color4B(255, 255, 255, 255));
@@ -206,7 +206,7 @@ void StartLayer::helpVisible(bool visible)
             helpBtnBack->setTag((int)ChildTag::HELP_BTN_BACK);
             helpBtnBack->setTitleFontName(GAME_CONFIG_GLOBAL_FONTNAME_01);
             helpBtnBack->setTitleFontSize(32.0f);
-            helpBtnBack->setTitleText(STRINGS_HELP_BTN_BACK);
+			helpBtnBack->setTitleText(this->m_strings["help_btn_back"]);
             this->addChild(helpBtnBack);
         }
         

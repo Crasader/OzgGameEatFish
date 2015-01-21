@@ -19,6 +19,9 @@
     <Filter Include="src\eatfish\scene">
       <UniqueIdentifier>{13b1f22a-b1f7-4122-b5de-ac8435476d0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\ozgcc">
+      <UniqueIdentifier>{ac9dc287-0aef-4d40-963d-4a96bccd32ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +56,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\eatfish\element\PlayerFishNode.cpp">
       <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\Strings.cpp">
+      <Filter>src\eatfish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ozgcc\Utility.cpp">
+      <Filter>src\ozgcc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\PlayerFishNode.h">
       <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ozgcc\Utility.h">
+      <Filter>src\ozgcc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
