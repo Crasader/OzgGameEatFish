@@ -8,6 +8,7 @@ using namespace eatfish::element;
 BaseFishNode::~BaseFishNode()
 {
 
+	CCLOG("BaseFishNode释放");
 }
 
 bool BaseFishNode::init()
@@ -21,24 +22,11 @@ bool BaseFishNode::init()
 	return false;
 }
 
-Rect BaseFishNode::centerRect()
-{
-	Node *center = this->getChildByTag((int)ChildTag::CENTER_POINT);
-	
-	if (!center)		
-		return Rect::ZERO;
-
-	Vec2 point = center->boundingBox().origin;
-	point = this->convertToWorldSpace(point);
-
-	return Rect(point.x, point.y, center->getContentSize().width, center->getContentSize().height);
-}
-
 void BaseFishNode::orientationLeft()
 {
 	this->m_orientation = Orientation::LEFT;
 
-	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::FISH);
+	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::MAIN_OBJ);
 	fish->setFlippedX(false);
 }
 
@@ -46,7 +34,7 @@ void BaseFishNode::orientationRight()
 {
 	this->m_orientation = Orientation::RIGHT;
 
-	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::FISH);
+	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::MAIN_OBJ);
 	fish->setFlippedX(true);
 }
 
@@ -80,13 +68,13 @@ void BaseFishNode::cump()
 
 void BaseFishNode::paralysis()
 {
-	if (!this->m_isMoving)
+	if (this->m_effectStatus == EffectStatus::INVINCIBLE || this->m_effectStatus == EffectStatus::PARALYSIS)
 		return;
 
-	this->m_isMoving = false;
+	this->m_effectStatus = EffectStatus::PARALYSIS;
 	this->stopAllActions();
 
-	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::FISH);
+	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::MAIN_OBJ);
 	if (fish)
 		fish->stopAllActions();
 
@@ -101,29 +89,24 @@ void BaseFishNode::paralysis()
 
 void BaseFishNode::pause()
 {
-	if (this->getChildByTag((int)ChildTag::FISH))
-		this->getChildByTag((int)ChildTag::FISH)->pause();
-
 	if (this->getChildByTag((int)ChildTag::CUMP))
 		this->getChildByTag((int)ChildTag::CUMP)->pause();
 
-	Node::pause();
+	BaseNode::pause();
 }
 
 void BaseFishNode::resume()
 {
-	if (this->getChildByTag((int)ChildTag::FISH))
-		this->getChildByTag((int)ChildTag::FISH)->resume();
-
 	if (this->getChildByTag((int)ChildTag::CUMP))
 		this->getChildByTag((int)ChildTag::CUMP)->resume();
 
-	Node::resume();
+	BaseNode::resume();
 }
 
 //protected
 void BaseFishNode::cumpAutoHide(cocos2d::Node* sender)
 {
+	//吃了鱼之后的cump图片自动消失
 	sender->stopAllActions();
 	sender->removeFromParentAndCleanup(true);
 
@@ -133,41 +116,6 @@ void BaseFishNode::cumpAutoHide(cocos2d::Node* sender)
 void BaseFishNode::paralysisEnd(cocos2d::Node* sender)
 {
 	this->playAnim();
-	this->m_isMoving = true;
+	this->m_effectStatus = BaseFishNode::EffectStatus::NORMAL;
 
-}
-
-//protected
-void BaseFishNode::playAnim()
-{
-	Animation *anim = AnimationCache::getInstance()->getAnimation(this->m_animKey);
-
-	Sprite *fish = (Sprite*)this->getChildByTag((int)ChildTag::FISH);
-
-	if (!anim)
-	{
-		Vector<SpriteFrame*> frames;
-
-		vector<string>::iterator it = this->m_animSpriteList.begin();
-		while (it != this->m_animSpriteList.end())
-		{
-			string item = *it;
-			frames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(item.c_str()));
-
-			it++;
-		}
-		
-		anim = Animation::createWithSpriteFrames(frames);
-		anim->setDelayPerUnit(0.1);
-		anim->setRestoreOriginalFrame(false);
-
-		AnimationCache::getInstance()->addAnimation(anim, this->m_animKey);
-
-		this->setContentSize(frames.at(0)->getOriginalSize());
-	}
-		
-	fish->stopAllActions();
-
-	RepeatForever *animate = RepeatForever::create(Animate::create(anim));
-	fish->runAction(animate);
 }

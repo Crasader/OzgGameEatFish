@@ -1,6 +1,6 @@
 
 #include "JellyfishNode.h"
-#include "FishData.h"
+#include "AnimData.h"
 #include "GameConfig.h"
 
 USING_NS_CC;
@@ -23,7 +23,7 @@ bool JellyfishNode::init()
 		Sprite *jellyfish = Sprite::createWithSpriteFrameName(this->m_animSpriteList.at(0).c_str());
 		jellyfish->setAnchorPoint(Vec2::ZERO);
 		jellyfish->setPosition(Vec2::ZERO);
-		jellyfish->setTag((int)BaseFishNode::ChildTag::FISH);
+		jellyfish->setTag((int)BaseFishNode::ChildTag::MAIN_OBJ);
 		this->addChild(jellyfish);
 
 		this->setAnchorPoint(Vec2(0.5, 0.5));

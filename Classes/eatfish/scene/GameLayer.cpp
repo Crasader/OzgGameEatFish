@@ -69,13 +69,17 @@ bool GameLayer::init()
 		this->m_eatFishTotalType3 = 0;
 		this->m_eatFishTotalType4 = 0;
 
+		this->m_stageClear = GAME_CONFIG_STAGE_CLEAR;
+		this->m_playerStatusNormal = (int)((float)this->m_stageClear * 0.29 + 0.5);
+		this->m_playerStatusBig = (int)((float)this->m_stageClear * 0.61 + 0.5);
+
 		vector<string> bgList;
 		bgList.push_back("bg3.png");
 		bgList.push_back("bg2.png");
 		bgList.push_back("bg1.png");
 		
 		//背景
-		int i = Utility::rangeInt(0, bgList.size() - 1);
+		int i = Utility::randomInt(0, bgList.size() - 1);
 		this->m_bg = bgList.at(i);
 		Sprite *bg = Sprite::create(this->m_bg.c_str());
 		bg->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
@@ -149,19 +153,14 @@ bool GameLayer::init()
 		this->addChild(fishLifeLab);
 
 		this->enabledTouchEvent(false);
-				
+		
 		//player
 		PlayerFishNode *player = PlayerFishNode::create();
 		player->setPosition(Vec2(winSize.width / 2, 800));
 		player->setTag((int)ChildTag::FISH_PLAYER);
 		fishNode->addChild(player, 99999);
 		player->invincible();
-
-		//test
-		/*EnemyFishNode *test = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish6);
-		test->setPosition(Vec2(300, 300));
-		this->addChild(test);*/
-
+		
 		//配合过场的时间，所以延时执行这个方法
 		this->scheduleOnce(schedule_selector(GameLayer::gameStart), GAME_CONFIG_TRANSITION);
 		return true;
@@ -185,8 +184,10 @@ void GameLayer::update(float delay)
 	if (!fishNode)
 		return;
 
+	float offsetVal = (float)this->m_stageNum * 0.0003;
+
 	//水母
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_JELLYFISH)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_JELLYFISH + offsetVal)
 	{
 		JellyfishNode *enemyFishNode = JellyfishNode::create();
 		
@@ -204,43 +205,62 @@ void GameLayer::update(float delay)
 
 	}
 
+	//金币
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ITEM_GOLD)
+	{
+		ItemNode *itemNode = ItemNode::create(ItemNode::ItemNodeType::GOLD);
+
+		float minVal = itemNode->getContentSize().width / 2;
+		float maxVal = winSize.width - (itemNode->getContentSize().width / 2);
+
+		float srcX = Utility::randomFloat(minVal, maxVal);
+
+		itemNode->setPosition(Vec2(srcX, winSize.height + (itemNode->getContentSize().height / 2)));
+		fishNode->addChild(itemNode);
+
+		float moveTime = Utility::randomFloat(15.0, 20.0);
+
+		itemNode->runAction(Sequence::createWithTwoActions(MoveTo::create(moveTime, Vec2(srcX, -itemNode->getContentSize().height / 2)), CallFuncN::create(CC_CALLBACK_1(GameLayer::itemMoveEnd, this))));
+
+	}
+
 	//fish1
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH1)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH1 + offsetVal)
 	{
 		EnemyFishNode *enemyFishNode = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish1);
 		this->enemyFishEmergence(enemyFishNode);
 	}
 
 	//fish2
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH2)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH2 + offsetVal)
 	{
 		EnemyFishNode *enemyFishNode = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish2);
 		this->enemyFishEmergence(enemyFishNode);
 	}
 
 	//fish3
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH3)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH3 + offsetVal)
 	{
 		EnemyFishNode *enemyFishNode = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish3);
 		this->enemyFishEmergence(enemyFishNode);
 	}
 
 	//fish4
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH4)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH4 + offsetVal)
 	{
 		EnemyFishNode *enemyFishNode = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish4);
 		this->enemyFishEmergence(enemyFishNode);
 	}
 
 	//fish5
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH5)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH5 + offsetVal)
 	{
 		EnemyFishNode *enemyFishNode = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish5);
 		this->enemyFishEmergence(enemyFishNode);
 	}
 
 	//fish6
-	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH6)
+	if (CCRANDOM_0_1() <= GAME_CONFIG_ENEMY_FISH6 + offsetVal)
 	{
 		EnemyFishNode *enemyFishNode = EnemyFishNode::create(EnemyFishNode::EnemyFishType::Fish6);
 		this->enemyFishEmergence(enemyFishNode);
@@ -285,11 +305,30 @@ void GameLayer::update(float delay)
 					if (dynamic_cast<JellyfishNode*>(targetObj) != NULL)
 					{
 						//player与水母碰撞了
-						if (!((PlayerFishNode*)srcObj)->m_isInvincible)
+						if (((PlayerFishNode*)srcObj)->m_effectStatus != PlayerFishNode::EffectStatus::INVINCIBLE)
 						{
 							SimpleAudioEngine::getInstance()->playEffect("audios_jellyfish.mp3");
 							((PlayerFishNode*)srcObj)->paralysis();
 						}
+					}
+					else if (dynamic_cast<ItemNode*>(targetObj) != NULL)
+					{
+						//player与item碰撞了
+
+						PlayerFishNode *player = (PlayerFishNode*)srcObj;
+
+						switch (((ItemNode*)targetObj)->m_type)
+						{
+						default:
+							//吃了金币
+							player->cump(((ItemNode*)targetObj)->m_type);
+							targetObj->removeFromParentAndCleanup(true);
+
+							//加分
+							this->changeScore(((ItemNode*)targetObj)->m_type);
+							break;
+						}
+
 					}
 					else if (dynamic_cast<EnemyFishNode*>(targetObj) != NULL)
 					{
@@ -333,13 +372,17 @@ void GameLayer::update(float delay)
 							this->changeScore(((EnemyFishNode*)targetObj)->m_type);
 
 							//关卡进度条
-							float cpProgress = (float)this->m_eatFishTotal / (float)GAME_CONFIG_STAGE_CLEAR;
+							float cpProgress = (float)this->m_eatFishTotal / (float)this->m_stageClear;
 							ProgressTimer *progress = (ProgressTimer*)this->getChildByTag((int)ChildTag::PROGRESS);
                             progress->setPercentage(cpProgress * 100.0f);
 
 							if (cpProgress >= 1)
 							{
 								//过关
+
+								if (this->getChildByTag((int)ChildTag::CLEAR_NODE))
+									break;
+								
 								this->unscheduleUpdate();
 								SimpleAudioEngine::getInstance()->playEffect("audios_complete.mp3");
 								this->enabledTouchEvent(false);
@@ -405,12 +448,12 @@ void GameLayer::update(float delay)
 							}
 
 							//变大的判断
-							if (player->m_status == PlayerFishNode::Status::NORMAL && this->m_eatFish >= GAME_CONFIG_PLAYER_STATUS_BIG)
+							if (player->m_status == PlayerFishNode::Status::NORMAL && this->m_eatFish >= this->m_playerStatusBig)
 							{
 								SimpleAudioEngine::getInstance()->playEffect("audios_growth.mp3");
 								player->changeStatus(PlayerFishNode::Status::BIG);
 							}
-							else if (player->m_status == PlayerFishNode::Status::SMALL && this->m_eatFish >= GAME_CONFIG_PLAYER_STATUS_NORMAL)
+							else if (player->m_status == PlayerFishNode::Status::SMALL && this->m_eatFish >= this->m_playerStatusNormal)
 							{
 								SimpleAudioEngine::getInstance()->playEffect("audios_growth.mp3");
 								player->changeStatus(PlayerFishNode::Status::NORMAL);
@@ -421,11 +464,11 @@ void GameLayer::update(float delay)
 						{
 							//如果在可控制状态下，不是无敌状态的话，就会被比自己大的鱼吃了
 							
-							if (player->m_isMoving && !player->m_isInvincible)
+							if (player->m_isMoving && ((PlayerFishNode*)srcObj)->m_effectStatus != PlayerFishNode::EffectStatus::INVINCIBLE)
 							{
 								((EnemyFishNode*)targetObj)->cump();
 								player->removeFromParentAndCleanup(true);
-																
+								
                                 this->enabledTouchEvent(false);
                                 
 								if (this->m_playerLife == 0)
@@ -507,6 +550,12 @@ void GameLayer::update(float delay)
 }
 
 void GameLayer::enemyFishMoveEnd(cocos2d::Node* sender)
+{
+	sender->removeFromParentAndCleanup(true);
+
+}
+
+void GameLayer::itemMoveEnd(cocos2d::Node* sender)
 {
 	sender->removeFromParentAndCleanup(true);
 
@@ -793,6 +842,10 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     this->m_eatFishTotalType3 = 0;
                     this->m_eatFishTotalType4 = 0;
                     
+					this->m_stageClear += GAME_CONFIG_STAGE_CLEAR_STEP;
+					this->m_playerStatusNormal = (int)((float)this->m_stageClear * 0.29 + 0.5);
+					this->m_playerStatusBig = (int)((float)this->m_stageClear * 0.61 + 0.5);
+
                     ProgressTimer *progress = (ProgressTimer*)this->getChildByTag((int)ChildTag::PROGRESS);
                     progress->setPercentage(0);
                     
@@ -821,6 +874,10 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     this->m_eatFishTotalType1And2 = 0;
                     this->m_eatFishTotalType3 = 0;
                     this->m_eatFishTotalType4 = 0;
+
+					this->m_stageClear = GAME_CONFIG_STAGE_CLEAR;
+					this->m_playerStatusNormal = (int)((float)this->m_stageClear * 0.29 + 0.5);
+					this->m_playerStatusBig = (int)((float)this->m_stageClear * 0.61 + 0.5);
                     
                     Label *stageNumLab = (Label*)this->getChildByTag((int)ChildTag::LAB_STAGE_NUM);
                     stageNumLab->setString(StringUtils::format(this->m_strings["game_scene_lab_stage_num"].c_str(), this->m_stageNum));
@@ -949,7 +1006,7 @@ void GameLayer::onLayerTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
 	Node *fishNode = this->getChildByTag((int)ChildTag::FISH_NODE);
 
 	PlayerFishNode *player = (PlayerFishNode*)fishNode->getChildByTag((int)ChildTag::FISH_PLAYER);
-	if (player && player->m_isMoving)
+	if (player && player->m_isMoving && player->m_effectStatus != BaseFishNode::EffectStatus::PARALYSIS)
 	{
 		Point beginPoint = touch->getLocation();
 		Point endPoint = touch->getPreviousLocation();
@@ -1047,6 +1104,25 @@ Vec2 GameLayer::enemyFishRandomRightPoint(BaseFishNode* enemyFishNode)
 }
 
 //private
+void GameLayer::changeScore(ItemNode::ItemNodeType type)
+{
+	switch (type)
+	{
+	default:
+		//金币
+		this->m_score += GAME_CONFIG_SCORE_ITEM_GOLD;
+
+		break;
+	}
+
+	if (this->m_score > GAME_CONFIG_MAX_SCORE)
+		this->m_score = GAME_CONFIG_MAX_SCORE;
+
+	Label *scoreLab = (Label*)this->getChildByTag((int)ChildTag::LAB_SCORE);
+	scoreLab->setString(StringUtils::format(this->m_strings["game_scene_lab_score"].c_str(), this->m_score).c_str());
+}
+
+//private
 void GameLayer::changeScore(EnemyFishNode::EnemyFishType type)
 {
 	switch (type)
@@ -1054,28 +1130,28 @@ void GameLayer::changeScore(EnemyFishNode::EnemyFishType type)
 		case EnemyFishNode::EnemyFishType::Fish2:
 			this->m_score += GAME_CONFIG_SCORE_FISH2;
 			this->m_eatFish += GAME_CONFIG_SCORE_FISH2;
-			this->m_eatFishTotal += 1;
+			this->m_eatFishTotal += GAME_CONFIG_SCORE_FISH2;
 			this->m_eatFishTotalType1And2 += 1;
 
 			break;
 		case EnemyFishNode::EnemyFishType::Fish3:
 			this->m_score += GAME_CONFIG_SCORE_FISH3;
 			this->m_eatFish += GAME_CONFIG_SCORE_FISH3;
-			this->m_eatFishTotal += 1;
+			this->m_eatFishTotal += GAME_CONFIG_SCORE_FISH3;
 			this->m_eatFishTotalType3 += 1;
 
 			break;
 		case EnemyFishNode::EnemyFishType::Fish4:
 			this->m_score += GAME_CONFIG_SCORE_FISH4;
 			this->m_eatFish += GAME_CONFIG_SCORE_FISH4;
-			this->m_eatFishTotal += 1;
+			this->m_eatFishTotal += GAME_CONFIG_SCORE_FISH4;
 			this->m_eatFishTotalType4 += 1;
 
 			break;
 		default:
 			this->m_score += GAME_CONFIG_SCORE_FISH1;
 			this->m_eatFish += GAME_CONFIG_SCORE_FISH1;
-			this->m_eatFishTotal += 1;
+			this->m_eatFishTotal += GAME_CONFIG_SCORE_FISH1;
 			this->m_eatFishTotalType1And2 += 1;
 
 			break;

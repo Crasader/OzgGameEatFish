@@ -5,7 +5,7 @@ USING_NS_CC;
 using namespace std;
 using namespace ozgcc;
 
-unsigned int Utility::rangeInt(unsigned int min, unsigned int max)
+unsigned int Utility::randomInt(unsigned int min, unsigned int max)
 {
 	unsigned int x = abs((int)(rand() * time(NULL) % (max - min)));
 	x += min;

@@ -34,7 +34,7 @@ class ozgcc::Utility
 
 public:
 
-	static unsigned int rangeInt(unsigned int min, unsigned int max); //范围随机数
+	static unsigned int randomInt(unsigned int min, unsigned int max); //范围随机数
 	//随机例子，第一次调用randomFloat的值都是一样的，所以第一次的值可以忽略
 	// OzgCCUtils::randomSeed(0);
 	// for (int i = 0; i < 10; i++)

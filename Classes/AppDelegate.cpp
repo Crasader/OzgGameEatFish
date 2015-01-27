@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "StartLayer.h"
+#include "InitLayer.h"
 #include "GameLayer.h"
 #include "GameConfig.h"
 #include "Strings.h"
@@ -9,7 +10,8 @@ using namespace CocosDenshion;
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
+AppDelegate::AppDelegate() 
+{
 
 }
 
@@ -28,17 +30,19 @@ void AppDelegate::initGLContextAttrs()
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool AppDelegate::applicationDidFinishLaunching() 
+{
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    if(!glview) {
+    if(!glview) 
+	{
         glview = GLViewImpl::create("Eat Fish");
-		glview->setFrameSize(960, 640);
+		glview->setFrameSize(GAME_CONFIG_WINDOW_WIDTH, GAME_CONFIG_WINDOW_HEIGHT);
         director->setOpenGLView(glview);
     }
 
-	glview->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
+	glview->setDesignResolutionSize(960.0, 640.0, ResolutionPolicy::SHOW_ALL);
 	
     // turn on display FPS
     director->setDisplayStats(false);
@@ -58,17 +62,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
         SimpleAudioEngine::getInstance()->setEffectsVolume(0.0);
     //声音处理结束
 	
-    // create a scene. it's an autorelease object
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     auto scene = eatfish::scene::StartLayer::createScene();
-
-    // run
-    director->runWithScene(scene);
+#else
+	auto scene = eatfish::scene::InitLayer::createScene();
+#endif
+	director->runWithScene(scene);
 
     return true;
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
-void AppDelegate::applicationDidEnterBackground() {
+void AppDelegate::applicationDidEnterBackground() 
+{
     
     Scene *s = Director::getInstance()->getRunningScene();
     for (int i = 0; i < (int)s->getChildren().size(); i++)
@@ -89,7 +95,8 @@ void AppDelegate::applicationDidEnterBackground() {
 }
 
 // this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground() {
+void AppDelegate::applicationWillEnterForeground() 
+{
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here

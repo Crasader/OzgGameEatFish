@@ -1,6 +1,6 @@
 
 #include "PlayerFishNode.h"
-#include "FishData.h"
+#include "AnimData.h"
 #include "GameConfig.h"
 
 USING_NS_CC;
@@ -19,13 +19,13 @@ bool PlayerFishNode::init()
 	{
 		this->m_status = Status::SMALL;
 		this->m_animSpriteList = PLAYER_FISH;
-		this->m_isInvincible = false;
+		this->m_effectStatus = EffectStatus::NORMAL;
 		this->m_isMoving = false;
 
 		Sprite *fish = Sprite::createWithSpriteFrameName(this->m_animSpriteList.at(0).c_str());
 		fish->setAnchorPoint(Vec2::ZERO);
 		fish->setPosition(Vec2::ZERO);
-		fish->setTag((int)BaseFishNode::ChildTag::FISH);
+		fish->setTag((int)BaseFishNode::ChildTag::MAIN_OBJ);
 		this->addChild(fish);
 
 		this->setAnchorPoint(Vec2(0.5, 0.5));
@@ -116,7 +116,7 @@ void PlayerFishNode::changeStatus(Status status)
 
 void PlayerFishNode::invincible()
 {
-	this->m_isInvincible = true;
+	this->m_effectStatus = EffectStatus::INVINCIBLE;
 
 	//水泡
 	Sprite *water = Sprite::createWithSpriteFrameName("water1.png");
@@ -131,7 +131,7 @@ void PlayerFishNode::invincible()
 
 void PlayerFishNode::invincibleCallback(float delay)
 {
-	this->m_isInvincible = false;
+	this->m_effectStatus = EffectStatus::NORMAL;
 
 	Sprite *water = (Sprite*)this->getChildByTag((int)ChildTag::WATER);
 	if (water)
@@ -141,7 +141,7 @@ void PlayerFishNode::invincibleCallback(float delay)
 
 void PlayerFishNode::invincible2()
 {
-	this->m_isInvincible = true;
+	this->m_effectStatus = EffectStatus::INVINCIBLE;
 
 	//水泡
 	Sprite *water = Sprite::createWithSpriteFrameName("water1.png");
@@ -171,7 +171,7 @@ void PlayerFishNode::invincible2Callback1(float delay)
 
 void PlayerFishNode::invincible2Callback2(float delay)
 {
-	this->m_isInvincible = false;
+	this->m_effectStatus = EffectStatus::NORMAL;
 
 	Sprite *water = (Sprite*)this->getChildByTag((int)ChildTag::WATER);
 	if (water)
@@ -236,6 +236,25 @@ void PlayerFishNode::cump(EnemyFishNode::EnemyFishType type)
 	scoreEffect->runAction(Sequence::createWithTwoActions(MoveBy::create(1.0, Vec2(0, 20)), CallFuncN::create(CC_CALLBACK_1(PlayerFishNode::scoreEffectMoveEnd, this))));
 
 	BaseFishNode::cump();
+}
+
+void PlayerFishNode::cump(ItemNode::ItemNodeType type)
+{
+	SimpleAudioEngine::getInstance()->playEffect("audios_eatgold.mp3");
+
+	Label *scoreEffect = NULL;
+	switch (type)
+	{
+	default:
+		//金币
+		scoreEffect = Label::create(StringUtils::format("+%i", GAME_CONFIG_SCORE_ITEM_GOLD).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 24, Size(this->getContentSize().width, 30), TextHAlignment::CENTER, TextVAlignment::CENTER);
+		break;
+	}
+	scoreEffect->setColor(Color3B(50, 220, 50));
+	scoreEffect->setPosition(Vec2(this->getContentSize().width / 2, this->getContentSize().height));
+	this->addChild(scoreEffect);
+	scoreEffect->runAction(Sequence::createWithTwoActions(MoveBy::create(1.0, Vec2(0, 20)), CallFuncN::create(CC_CALLBACK_1(PlayerFishNode::scoreEffectMoveEnd, this))));
+
 }
 
 //private

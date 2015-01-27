@@ -5,6 +5,7 @@
 #include "BaseLayer.h"
 #include "BaseFishNode.h"
 #include "EnemyFishNode.h"
+#include "ItemNode.h"
 
 namespace eatfish
 {
@@ -22,13 +23,17 @@ private:
 	int m_stageNum; //关卡
 	int m_score; //分数
 
-	int m_eatFish; //吃了鱼的分数，用来判断变大的，player死了会清0
-	int m_eatFishTotal; //吃了鱼的总数
+	int m_eatFish; //吃了鱼的总数，用来判断变大的，player死了会清0
+	int m_eatFishTotal; //吃了鱼的总数，这个值player死了不会清0
 	int m_eatFishTotalType1And2; //吃了Type1和2的鱼的总数
 	int m_eatFishTotalType3; //吃了Type3的鱼的总数
 	int m_eatFishTotalType4; //吃了Type4的鱼的总数
 
 	int m_playerLife; //
+
+	int m_stageClear; //吃够多少条鱼过一关
+	int m_playerStatusNormal; //升级到中等鱼的所需条件，这个值必须为m_stageClear的29%
+	int m_playerStatusBig; //升级到大鱼的所需条件，这个值必须为m_stageClear的61%
 
 	std::string m_bg;
 
@@ -50,12 +55,13 @@ private:
 	cocos2d::Vec2 enemyFishRandomLeftPoint(eatfish::element::BaseFishNode* enemyFishNode);
 	cocos2d::Vec2 enemyFishRandomRightPoint(eatfish::element::BaseFishNode* enemyFishNode);
 	
+	void changeScore(eatfish::element::ItemNode::ItemNodeType type);
 	void changeScore(eatfish::element::EnemyFishNode::EnemyFishType type);
 	void changePlayerLife(int playerLife);
     
     void onDialogBtnNo(cocos2d::Node* sender);
     void onDialogBtnYes(cocos2d::Node* sender);
-    
+    	
 public:
 
 	enum class ChildTag
@@ -92,11 +98,12 @@ public:
 	static cocos2d::Scene* createScene();
 
 	void update(float delay);
-
-	void enemyFishMoveEnd(cocos2d::Node* sender);
-    
+		    
     void scenePause();
     
+	void enemyFishMoveEnd(cocos2d::Node* sender);
+	void itemMoveEnd(cocos2d::Node* sender);
+
 };
 
 #endif

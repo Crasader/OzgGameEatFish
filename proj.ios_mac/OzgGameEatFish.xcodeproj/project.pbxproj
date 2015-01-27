@@ -123,6 +123,12 @@
 		890F4A771A41D29E0041DCF7 /* Fishtales.plist in Resources */ = {isa = PBXBuildFile; fileRef = 890F4A3E1A41D29D0041DCF7 /* Fishtales.plist */; };
 		890F4A781A41D29E0041DCF7 /* Fishtales.png in Resources */ = {isa = PBXBuildFile; fileRef = 890F4A3F1A41D29D0041DCF7 /* Fishtales.png */; };
 		890F4A791A41D29E0041DCF7 /* Fishtales.png in Resources */ = {isa = PBXBuildFile; fileRef = 890F4A3F1A41D29D0041DCF7 /* Fishtales.png */; };
+		89400A311A77C71A0091F245 /* InitLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89400A2F1A77C71A0091F245 /* InitLayer.cpp */; };
+		89400A321A77C71A0091F245 /* InitLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89400A2F1A77C71A0091F245 /* InitLayer.cpp */; };
+		89400A381A77C7310091F245 /* BaseNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89400A341A77C7310091F245 /* BaseNode.cpp */; };
+		89400A391A77C7310091F245 /* BaseNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89400A341A77C7310091F245 /* BaseNode.cpp */; };
+		89400A3A1A77C7310091F245 /* ItemNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89400A361A77C7310091F245 /* ItemNode.cpp */; };
+		89400A3B1A77C7310091F245 /* ItemNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89400A361A77C7310091F245 /* ItemNode.cpp */; };
 		898D72F61A41D14E0059F4D6 /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 898D72F01A41D14E0059F4D6 /* BaseLayer.cpp */; };
 		898D72F71A41D14E0059F4D6 /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 898D72F01A41D14E0059F4D6 /* BaseLayer.cpp */; };
 		898D72F81A41D14E0059F4D6 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 898D72F21A41D14E0059F4D6 /* GameLayer.cpp */; };
@@ -267,6 +273,13 @@
 		890F4A3D1A41D29D0041DCF7 /* Fishall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishall.png; sourceTree = "<group>"; };
 		890F4A3E1A41D29D0041DCF7 /* Fishtales.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Fishtales.plist; sourceTree = "<group>"; };
 		890F4A3F1A41D29D0041DCF7 /* Fishtales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishtales.png; sourceTree = "<group>"; };
+		89400A2F1A77C71A0091F245 /* InitLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InitLayer.cpp; path = eatfish/scene/InitLayer.cpp; sourceTree = "<group>"; };
+		89400A301A77C71A0091F245 /* InitLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitLayer.h; path = eatfish/scene/InitLayer.h; sourceTree = "<group>"; };
+		89400A331A77C7310091F245 /* AnimData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimData.h; path = eatfish/element/AnimData.h; sourceTree = "<group>"; };
+		89400A341A77C7310091F245 /* BaseNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseNode.cpp; path = eatfish/element/BaseNode.cpp; sourceTree = "<group>"; };
+		89400A351A77C7310091F245 /* BaseNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNode.h; path = eatfish/element/BaseNode.h; sourceTree = "<group>"; };
+		89400A361A77C7310091F245 /* ItemNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemNode.cpp; path = eatfish/element/ItemNode.cpp; sourceTree = "<group>"; };
+		89400A371A77C7310091F245 /* ItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemNode.h; path = eatfish/element/ItemNode.h; sourceTree = "<group>"; };
 		898D72EE1A41D13A0059F4D6 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameConfig.h; path = eatfish/GameConfig.h; sourceTree = "<group>"; };
 		898D72F01A41D14E0059F4D6 /* BaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseLayer.cpp; path = eatfish/scene/BaseLayer.cpp; sourceTree = "<group>"; };
 		898D72F11A41D14E0059F4D6 /* BaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseLayer.h; path = eatfish/scene/BaseLayer.h; sourceTree = "<group>"; };
@@ -282,7 +295,6 @@
 		898D73011A41D15F0059F4D6 /* DialogNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DialogNode.h; path = eatfish/element/DialogNode.h; sourceTree = "<group>"; };
 		898D73021A41D15F0059F4D6 /* EnemyFishNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyFishNode.cpp; path = eatfish/element/EnemyFishNode.cpp; sourceTree = "<group>"; };
 		898D73031A41D15F0059F4D6 /* EnemyFishNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyFishNode.h; path = eatfish/element/EnemyFishNode.h; sourceTree = "<group>"; };
-		898D73041A41D15F0059F4D6 /* FishData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FishData.h; path = eatfish/element/FishData.h; sourceTree = "<group>"; };
 		898D73051A41D15F0059F4D6 /* JellyfishNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JellyfishNode.cpp; path = eatfish/element/JellyfishNode.cpp; sourceTree = "<group>"; };
 		898D73061A41D15F0059F4D6 /* JellyfishNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JellyfishNode.h; path = eatfish/element/JellyfishNode.h; sourceTree = "<group>"; };
 		898D73071A41D15F0059F4D6 /* PlayerFishNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerFishNode.cpp; path = eatfish/element/PlayerFishNode.cpp; sourceTree = "<group>"; };
@@ -532,6 +544,11 @@
 		898D72EC1A41D0ED0059F4D6 /* element */ = {
 			isa = PBXGroup;
 			children = (
+				89400A331A77C7310091F245 /* AnimData.h */,
+				89400A341A77C7310091F245 /* BaseNode.cpp */,
+				89400A351A77C7310091F245 /* BaseNode.h */,
+				89400A361A77C7310091F245 /* ItemNode.cpp */,
+				89400A371A77C7310091F245 /* ItemNode.h */,
 				898D72FC1A41D15F0059F4D6 /* BaseEnemyFishNode.cpp */,
 				898D72FD1A41D15F0059F4D6 /* BaseEnemyFishNode.h */,
 				898D72FE1A41D15F0059F4D6 /* BaseFishNode.cpp */,
@@ -540,7 +557,6 @@
 				898D73011A41D15F0059F4D6 /* DialogNode.h */,
 				898D73021A41D15F0059F4D6 /* EnemyFishNode.cpp */,
 				898D73031A41D15F0059F4D6 /* EnemyFishNode.h */,
-				898D73041A41D15F0059F4D6 /* FishData.h */,
 				898D73051A41D15F0059F4D6 /* JellyfishNode.cpp */,
 				898D73061A41D15F0059F4D6 /* JellyfishNode.h */,
 				898D73071A41D15F0059F4D6 /* PlayerFishNode.cpp */,
@@ -552,6 +568,8 @@
 		898D72ED1A41D0FD0059F4D6 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				89400A2F1A77C71A0091F245 /* InitLayer.cpp */,
+				89400A301A77C71A0091F245 /* InitLayer.h */,
 				898D72F01A41D14E0059F4D6 /* BaseLayer.cpp */,
 				898D72F11A41D14E0059F4D6 /* BaseLayer.h */,
 				898D72F21A41D14E0059F4D6 /* GameLayer.cpp */,
@@ -788,6 +806,7 @@
 				89D655E01A6FFE00001040A9 /* Utility.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				89400A381A77C7310091F245 /* BaseNode.cpp in Sources */,
 				898D72F61A41D14E0059F4D6 /* BaseLayer.cpp in Sources */,
 				898D730B1A41D15F0059F4D6 /* BaseFishNode.cpp in Sources */,
 				89D655E41A6FFF95001040A9 /* Strings.cpp in Sources */,
@@ -800,6 +819,8 @@
 				898D73091A41D15F0059F4D6 /* BaseEnemyFishNode.cpp in Sources */,
 				898D73111A41D15F0059F4D6 /* JellyfishNode.cpp in Sources */,
 				898D730D1A41D15F0059F4D6 /* DialogNode.cpp in Sources */,
+				89400A3A1A77C7310091F245 /* ItemNode.cpp in Sources */,
+				89400A311A77C71A0091F245 /* InitLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,15 +830,18 @@
 			files = (
 				89D655E11A6FFE00001040A9 /* Utility.cpp in Sources */,
 				898D72FB1A41D14E0059F4D6 /* StartLayer.cpp in Sources */,
+				89400A3B1A77C7310091F245 /* ItemNode.cpp in Sources */,
 				898D730C1A41D15F0059F4D6 /* BaseFishNode.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				89D655E51A6FFF95001040A9 /* Strings.cpp in Sources */,
 				898D72F91A41D14E0059F4D6 /* GameLayer.cpp in Sources */,
 				898D73101A41D15F0059F4D6 /* EnemyFishNode.cpp in Sources */,
+				89400A391A77C7310091F245 /* BaseNode.cpp in Sources */,
 				898D730A1A41D15F0059F4D6 /* BaseEnemyFishNode.cpp in Sources */,
 				898D73141A41D15F0059F4D6 /* PlayerFishNode.cpp in Sources */,
 				898D730E1A41D15F0059F4D6 /* DialogNode.cpp in Sources */,
 				898D72F71A41D14E0059F4D6 /* BaseLayer.cpp in Sources */,
+				89400A321A77C71A0091F245 /* InitLayer.cpp in Sources */,
 				898D73121A41D15F0059F4D6 /* JellyfishNode.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 			);

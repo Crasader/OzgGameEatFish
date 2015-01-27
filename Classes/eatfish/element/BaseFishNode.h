@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
+#include "BaseNode.h"
 
 namespace eatfish
 {
@@ -12,16 +13,11 @@ namespace eatfish
 	}
 }
 
-class eatfish::element::BaseFishNode : public cocos2d::Node
+class eatfish::element::BaseFishNode : public eatfish::element::BaseNode
 {
 
 protected:
-
-	std::vector<std::string> m_animSpriteList;
-	std::string m_animKey;
-
-	void playAnim();
-
+	
 	void cumpAutoHide(cocos2d::Node* sender);
 	virtual void paralysisEnd(cocos2d::Node* sender);
 	
@@ -29,7 +25,7 @@ public:
 
 	enum class ChildTag
 	{
-		FISH = 1,
+		MAIN_OBJ = 1,
 		CENTER_POINT = 2,
 		CUMP = 3
 	};
@@ -40,14 +36,20 @@ public:
 		RIGHT = 2
 	};
 
+	//效果状态，例如无敌状态、通常状态、麻痹状态
+	enum class EffectStatus
+	{
+		NORMAL = 1, //通常状态
+		INVINCIBLE = 2, //无敌状态
+		PARALYSIS = 3 //麻痹状态
+	};
+
 	Orientation m_orientation; //朝向
-	bool m_isMoving;
+	EffectStatus m_effectStatus;
 
 	virtual ~BaseFishNode();
 	virtual bool init();
-
-	cocos2d::Rect centerRect();
-
+	
 	void orientationRight();
 	void orientationLeft();
 

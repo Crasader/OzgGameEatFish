@@ -63,6 +63,15 @@
     <ClCompile Include="..\Classes\ozgcc\Utility.cpp">
       <Filter>src\ozgcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\BaseNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\ItemNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\scene\InitLayer.cpp">
+      <Filter>src\eatfish\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -98,9 +107,6 @@
     <ClInclude Include="..\Classes\eatfish\element\EnemyFishNode.h">
       <Filter>src\eatfish\element</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\eatfish\element\FishData.h">
-      <Filter>src\eatfish\element</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\eatfish\element\JellyfishNode.h">
       <Filter>src\eatfish\element</Filter>
     </ClInclude>
@@ -109,6 +115,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ozgcc\Utility.h">
       <Filter>src\ozgcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\BaseNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\ItemNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\AnimData.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\scene\InitLayer.h">
+      <Filter>src\eatfish\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

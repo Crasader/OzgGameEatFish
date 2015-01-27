@@ -3,6 +3,7 @@
 
 #include "BaseFishNode.h"
 #include "EnemyFishNode.h"
+#include "ItemNode.h"
 
 namespace eatfish
 {
@@ -20,13 +21,14 @@ private:
 
 public:
 
+	//大中小的状态
 	enum class Status
 	{
 		SMALL = 1,
 		NORMAL = 2,
 		BIG = 3
 	};
-
+		
 	enum class ChildTag
 	{
 		WATER = 10,
@@ -34,8 +36,7 @@ public:
 	};
 
 	Status m_status;
-	bool m_isInvincible; //是否正在无敌状态
-
+	
 	virtual ~PlayerFishNode();
 	virtual bool init();
 
@@ -54,7 +55,7 @@ public:
 	virtual void resume();
 	
 	virtual void cump(eatfish::element::EnemyFishNode::EnemyFishType type);
-
+	virtual void cump(eatfish::element::ItemNode::ItemNodeType type);
 };
 
 #endif

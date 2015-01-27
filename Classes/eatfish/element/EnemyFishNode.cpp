@@ -1,6 +1,6 @@
 
 #include "EnemyFishNode.h"
-#include "FishData.h"
+#include "AnimData.h"
 #include "GameConfig.h"
 
 USING_NS_CC;
@@ -56,7 +56,7 @@ bool EnemyFishNode::init(EnemyFishType type)
 		Sprite *enemyFish = Sprite::createWithSpriteFrameName(this->m_animSpriteList.at(0).c_str());
 		enemyFish->setAnchorPoint(Vec2::ZERO);
 		enemyFish->setPosition(Vec2::ZERO);
-		enemyFish->setTag((int)BaseFishNode::ChildTag::FISH);
+		enemyFish->setTag((int)BaseFishNode::ChildTag::MAIN_OBJ);
 		this->addChild(enemyFish);
 
 		this->setAnchorPoint(Vec2(0.5, 0.5));
