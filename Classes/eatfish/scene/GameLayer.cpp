@@ -72,18 +72,10 @@ bool GameLayer::init()
 		this->m_stageClear = GAME_CONFIG_STAGE_CLEAR;
 		this->m_playerStatusNormal = (int)((float)this->m_stageClear * 0.29 + 0.5);
 		this->m_playerStatusBig = (int)((float)this->m_stageClear * 0.61 + 0.5);
-
-		vector<string> bgList;
-		bgList.push_back("bg3.png");
-		bgList.push_back("bg2.png");
-		bgList.push_back("bg1.png");
-		
+				
 		//背景
-		int i = Utility::randomInt(0, bgList.size() - 1);
-		this->m_bg = bgList.at(i);
-		Sprite *bg = Sprite::create(this->m_bg.c_str());
+		Sprite *bg = this->createRandomBg();
 		bg->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
-		bg->setTag((int)ChildTag::BG);
 		this->addChild(bg);
 
 		//水泡
@@ -829,6 +821,17 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                 {
                     //下一关
                     
+					//更新背景
+					this->removeChildByTag((int)ChildTag::BG);
+					Director::getInstance()->getTextureCache()->removeTextureForKey(this->m_bg);
+					
+					Size winSize = Director::getInstance()->getWinSize();
+
+					Sprite *bg = this->createRandomBg();
+					bg->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
+					this->insertChild(bg, 0);
+					//更新背景 end
+
                     this->m_stageNum += 1;
                     if(this->m_stageNum > GAME_CONFIG_MAX_STAGE)
                         this->m_stageNum = GAME_CONFIG_MAX_STAGE;
@@ -1237,4 +1240,20 @@ void GameLayer::onDialogBtnYes(cocos2d::Node* sender)
     Scene *s = StartLayer::createScene();
     TransitionFade *t = TransitionFade::create(GAME_CONFIG_TRANSITION, s);
     Director::getInstance()->replaceScene(t);
+}
+
+//private
+Sprite* GameLayer::createRandomBg()
+{
+	vector<string> bgList;
+	bgList.push_back("bg1.png");
+	bgList.push_back("bg2.png");
+	bgList.push_back("bg3.png");
+
+	//背景
+	int i = Utility::randomInt(0, (int)bgList.size() - 1);
+	this->m_bg = bgList.at(i);
+	Sprite *bg = Sprite::create(this->m_bg.c_str());
+	bg->setTag((int)ChildTag::BG);
+	return bg;
 }

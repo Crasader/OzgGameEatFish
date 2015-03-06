@@ -7,6 +7,7 @@ using namespace ozgcc;
 
 unsigned int Utility::randomInt(unsigned int min, unsigned int max)
 {
+	srand((unsigned int)time(NULL));
 	unsigned int x = abs((int)(rand() * time(NULL) % (max - min)));
 	x += min;
 	return x;

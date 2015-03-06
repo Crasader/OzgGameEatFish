@@ -61,7 +61,9 @@ private:
     
     void onDialogBtnNo(cocos2d::Node* sender);
     void onDialogBtnYes(cocos2d::Node* sender);
-    	
+    
+	cocos2d::Sprite* createRandomBg(); //生成随机背景，本办法会改变m_bg的值
+
 public:
 
 	enum class ChildTag
