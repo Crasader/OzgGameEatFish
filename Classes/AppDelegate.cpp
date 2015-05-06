@@ -30,6 +30,13 @@ void AppDelegate::initGLContextAttrs()
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
+// If you want to use packages manager to install more packages, 
+// don't modify or remove this function
+static int register_all_packages()
+{
+    return 0; //flag for packages manager
+}
+
 bool AppDelegate::applicationDidFinishLaunching() 
 {
     // initialize director
@@ -50,6 +57,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+	register_all_packages();
+	
 	//声音的处理
     if(UserDefault::getInstance()->getBoolForKey(GAME_CONFIG_BGSOUND, true))
         SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0);
