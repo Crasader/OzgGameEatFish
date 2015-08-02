@@ -10,6 +10,18 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\eatfish">
+      <UniqueIdentifier>{dd832045-1f60-4883-a1ae-4cfdb6e1633e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eatfish\element">
+      <UniqueIdentifier>{0c092871-4fcf-40c2-a425-692b5e854c0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eatfish\scene">
+      <UniqueIdentifier>{13b1f22a-b1f7-4122-b5de-ac8435476d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ozgcc">
+      <UniqueIdentifier>{ac9dc287-0aef-4d40-963d-4a96bccd32ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -18,8 +30,47 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\eatfish\scene\BaseLayer.cpp">
+      <Filter>src\eatfish\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\scene\GameLayer.cpp">
+      <Filter>src\eatfish\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\scene\StartLayer.cpp">
+      <Filter>src\eatfish\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\BaseEnemyFishNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\BaseFishNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\DialogNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\EnemyFishNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\JellyfishNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\PlayerFishNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\Strings.cpp">
+      <Filter>src\eatfish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ozgcc\Utility.cpp">
+      <Filter>src\ozgcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\BaseNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\element\ItemNode.cpp">
+      <Filter>src\eatfish\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\eatfish\scene\InitLayer.cpp">
+      <Filter>src\eatfish\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -29,8 +80,53 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\eatfish\GameConfig.h">
+      <Filter>src\eatfish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\Strings.h">
+      <Filter>src\eatfish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\scene\BaseLayer.h">
+      <Filter>src\eatfish\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\scene\GameLayer.h">
+      <Filter>src\eatfish\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\scene\StartLayer.h">
+      <Filter>src\eatfish\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\BaseEnemyFishNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\BaseFishNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\DialogNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\EnemyFishNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\JellyfishNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\PlayerFishNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ozgcc\Utility.h">
+      <Filter>src\ozgcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\BaseNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\ItemNode.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\element\AnimData.h">
+      <Filter>src\eatfish\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\eatfish\scene\InitLayer.h">
+      <Filter>src\eatfish\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
