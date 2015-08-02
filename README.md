@@ -12,8 +12,6 @@ OzgGame—大鱼吃小鱼
 
 win32平台使用vs2013。编译前需要在vs里面将libui项目以下的文件删除：UIWidgets/UIWebViewImpl-win32.h、UIWidgets/UIWebViewImpl-win32.cpp、UIWidgets/UIEditBox/UIEditBoxImplWin.h、UIWidgets/UIEditBox/UIEditBoxImplWin.cpp、UIWidgets/UIEditBox/Win32InputBox.h、UIWidgets/UIEditBox/Win32InputBox.cpp。在UIWidgets/UIEditBox下面添加UIEditBoxImpl-win32.h和UIEditBoxImpl-win32.cpp。Classes文件夹下的所有文件转换为GBK编码，把Resources目录下的所有文件复制到exe主程序的位置。
 
-ios、mac平台使用xcode6.1
-
 android平台直接在OzgGameEatFish目录下执行cocos compile -p android -j 4，真机可运行
 
 linux平台直接在OzgGameEatFish目录下执行cocos compile -p linux -j 4，ubuntu测试通过
