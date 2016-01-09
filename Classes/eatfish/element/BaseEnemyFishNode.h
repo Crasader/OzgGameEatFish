@@ -1,7 +1,7 @@
 #ifndef __OzgGameEatFish__BaseEnemyFishNode__
 #define __OzgGameEatFish__BaseEnemyFishNode__
 
-#include "BaseFishNode.h"
+#include "eatfish/element/BaseFishNode.h"
 
 namespace eatfish
 {

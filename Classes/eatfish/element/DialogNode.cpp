@@ -1,6 +1,6 @@
 
-#include "DialogNode.h"
-#include "GameConfig.h"
+#include "eatfish/element/DialogNode.h"
+#include "eatfish/GameConfig.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -61,7 +61,10 @@ bool DialogNode::init(std::string title, std::string content, std::string btn1Te
 		labTitle->setTag((int)ChildTag::LAB_TITLE);
 		this->addChild(labTitle);
 
-		Label *labContent = Label::create(content, GAME_CONFIG_GLOBAL_FONTNAME_01, 25, Size(300, 70), TextHAlignment::LEFT, TextVAlignment::TOP);
+        Label *labContent = Label::createWithSystemFont(content, GAME_CONFIG_GLOBAL_FONTNAME_01, 25);
+        labContent->setDimensions(300, 70);
+        labContent->setHorizontalAlignment(TextHAlignment::LEFT);
+        labContent->setVerticalAlignment(TextVAlignment::TOP);
 		labContent->setPosition(Vec2(this->getContentSize().width / 2, 115));
 		labContent->setTag((int)ChildTag::LAB_CONTENT);
 		this->addChild(labContent);

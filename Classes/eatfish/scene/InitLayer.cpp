@@ -1,6 +1,6 @@
-#include "InitLayer.h"
-#include "StartLayer.h"
-#include "GameConfig.h"
+#include "eatfish/scene/InitLayer.h"
+#include "eatfish/scene/StartLayer.h"
+#include "eatfish/GameConfig.h"
 
 USING_NS_CC;
 using namespace eatfish;

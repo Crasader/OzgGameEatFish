@@ -1,6 +1,6 @@
 
-#include "BaseEnemyFishNode.h"
-#include "GameLayer.h"
+#include "eatfish/element/BaseEnemyFishNode.h"
+#include "eatfish/scene/GameLayer.h"
 
 USING_NS_CC;
 using namespace std;

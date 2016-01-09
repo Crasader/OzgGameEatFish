@@ -1,8 +1,8 @@
 
-#include "StartLayer.h"
-#include "GameLayer.h"
-#include "GameConfig.h"
-#include "Strings.h"
+#include "eatfish/scene/StartLayer.h"
+#include "eatfish/scene/GameLayer.h"
+#include "eatfish/GameConfig.h"
+#include "eatfish/Strings.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;

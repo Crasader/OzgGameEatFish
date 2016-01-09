@@ -1,6 +1,6 @@
 
-#include "Strings.h"
-#include "Utility.h"
+#include "eatfish/Strings.h"
+#include "ozgcc/Utility.h"
 
 using namespace eatfish;
 using namespace std;

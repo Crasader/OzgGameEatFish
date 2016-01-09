@@ -1,7 +1,7 @@
 
-#include "PlayerFishNode.h"
-#include "AnimData.h"
-#include "GameConfig.h"
+#include "eatfish/element/PlayerFishNode.h"
+#include "eatfish/element/AnimData.h"
+#include "eatfish/GameConfig.h"
 
 USING_NS_CC;
 using namespace eatfish::element;
@@ -218,18 +218,21 @@ void PlayerFishNode::cump(EnemyFishNode::EnemyFishType type)
 	switch (type)
 	{
 		case EnemyFishNode::EnemyFishType::Fish2:
-			scoreEffect = Label::create(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH2).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 24, Size(this->getContentSize().width, 30), TextHAlignment::CENTER, TextVAlignment::CENTER);
+            scoreEffect = Label::createWithSystemFont(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH2), GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
 			break;
 		case EnemyFishNode::EnemyFishType::Fish3:
-			scoreEffect = Label::create(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH3).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 24, Size(this->getContentSize().width, 30), TextHAlignment::CENTER, TextVAlignment::CENTER);
+			scoreEffect = Label::createWithSystemFont(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH3), GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
 			break;
 		case EnemyFishNode::EnemyFishType::Fish4:
-			scoreEffect = Label::create(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH4).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 24, Size(this->getContentSize().width, 30), TextHAlignment::CENTER, TextVAlignment::CENTER);
+			scoreEffect = Label::createWithSystemFont(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH4), GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
 			break;
 		default:
-			scoreEffect = Label::create(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH1).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 24, Size(this->getContentSize().width, 30), TextHAlignment::CENTER, TextVAlignment::CENTER);
+			scoreEffect = Label::createWithSystemFont(StringUtils::format("+%i", GAME_CONFIG_SCORE_FISH1), GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
 			break;
 	}
+    scoreEffect->setDimensions(this->getContentSize().width, 30);
+    scoreEffect->setHorizontalAlignment(TextHAlignment::CENTER);
+    scoreEffect->setVerticalAlignment(TextVAlignment::CENTER);
 	scoreEffect->setColor(Color3B(255, 255, 0));
 	scoreEffect->setPosition(Vec2(this->getContentSize().width / 2, this->getContentSize().height));
 	this->addChild(scoreEffect);
@@ -245,11 +248,15 @@ void PlayerFishNode::cump(ItemNode::ItemNodeType type)
 	Label *scoreEffect = NULL;
 	switch (type)
 	{
-	default:
-		//金币
-		scoreEffect = Label::create(StringUtils::format("+%i", GAME_CONFIG_SCORE_ITEM_GOLD).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 24, Size(this->getContentSize().width, 30), TextHAlignment::CENTER, TextVAlignment::CENTER);
-		break;
+        default:
+            //金币
+            scoreEffect = Label::createWithSystemFont(StringUtils::format("+%i", GAME_CONFIG_SCORE_ITEM_GOLD), GAME_CONFIG_GLOBAL_FONTNAME_01, 24);
+            break;
 	}
+    scoreEffect->setDimensions(this->getContentSize().width, 30);
+    scoreEffect->setHorizontalAlignment(TextHAlignment::CENTER);
+    scoreEffect->setVerticalAlignment(TextVAlignment::CENTER);
+    
 	scoreEffect->setColor(Color3B(50, 220, 50));
 	scoreEffect->setPosition(Vec2(this->getContentSize().width / 2, this->getContentSize().height));
 	this->addChild(scoreEffect);

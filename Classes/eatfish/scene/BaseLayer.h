@@ -5,7 +5,7 @@
 #include "cocos-ext.h"
 #include "ui/CocosGUI.h"
 #include "SimpleAudioEngine.h"
-#include "Strings.h"
+#include "eatfish/Strings.h"
 
 namespace eatfish
 {

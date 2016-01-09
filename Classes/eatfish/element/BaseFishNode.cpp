@@ -1,5 +1,5 @@
 
-#include "BaseFishNode.h"
+#include "eatfish/element/BaseFishNode.h"
 
 USING_NS_CC;
 using namespace std;

@@ -1,7 +1,7 @@
 
-#include "EnemyFishNode.h"
-#include "AnimData.h"
-#include "GameConfig.h"
+#include "eatfish/element/EnemyFishNode.h"
+#include "eatfish/element/AnimData.h"
+#include "eatfish/GameConfig.h"
 
 USING_NS_CC;
 using namespace eatfish::element;

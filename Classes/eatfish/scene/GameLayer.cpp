@@ -1,13 +1,13 @@
 
-#include "GameLayer.h"
-#include "EnemyFishNode.h"
-#include "JellyfishNode.h"
-#include "PlayerFishNode.h"
-#include "StartLayer.h"
-#include "DialogNode.h"
-#include "GameConfig.h"
-#include "Strings.h"
-#include "Utility.h"
+#include "eatfish/scene/GameLayer.h"
+#include "eatfish/scene/StartLayer.h"
+#include "eatfish/element/EnemyFishNode.h"
+#include "eatfish/element/JellyfishNode.h"
+#include "eatfish/element/PlayerFishNode.h"
+#include "eatfish/element/DialogNode.h"
+#include "eatfish/GameConfig.h"
+#include "eatfish/Strings.h"
+#include "ozgcc/Utility.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -97,13 +97,19 @@ bool GameLayer::init()
 		this->addChild(fishNode);
 
 		//右上角的部分
-		Label *stageNumLab = Label::create(StringUtils::format(this->m_strings["game_scene_lab_stage_num"].c_str(), this->m_stageNum).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(200, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+        Label *stageNumLab = Label::createWithSystemFont(StringUtils::format(this->m_strings["game_scene_lab_stage_num"].c_str(), this->m_stageNum), GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
+        stageNumLab->setDimensions(200, 40);
+        stageNumLab->setHorizontalAlignment(TextHAlignment::LEFT);
+        stageNumLab->setVerticalAlignment(TextVAlignment::CENTER);
 		stageNumLab->setPosition(Vec2(winSize.width - 100, winSize.height - 24));
 		stageNumLab->setTag((int)ChildTag::LAB_STAGE_NUM);
 		stageNumLab->enableOutline(Color4B::BLACK, 2);
 		this->addChild(stageNumLab);
 
-		Label *scoreLab = Label::create(StringUtils::format(this->m_strings["game_scene_lab_score"].c_str(), this->m_score).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(200, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+		Label *scoreLab = Label::createWithSystemFont(StringUtils::format(this->m_strings["game_scene_lab_score"].c_str(), this->m_score), GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
+        scoreLab->setDimensions(200, 40);
+        scoreLab->setHorizontalAlignment(TextHAlignment::LEFT);
+        scoreLab->setVerticalAlignment(TextVAlignment::CENTER);
 		scoreLab->setPosition(Vec2(winSize.width - 100, winSize.height - 56));
 		scoreLab->setTag((int)ChildTag::LAB_SCORE);
 		scoreLab->enableOutline(Color4B::BLACK, 2);
@@ -138,7 +144,10 @@ bool GameLayer::init()
 		fishLife->setTag((int)ChildTag::FISH_LIFE);
 		this->addChild(fishLife);
 
-		Label *fishLifeLab = Label::create(StringUtils::format("%i", this->m_playerLife).c_str(), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(100, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+        Label *fishLifeLab = Label::createWithSystemFont(StringUtils::format("%i", this->m_playerLife), GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
+        fishLifeLab->setDimensions(100, 40);
+        fishLifeLab->setHorizontalAlignment(TextHAlignment::LEFT);
+        fishLifeLab->setVerticalAlignment(TextVAlignment::CENTER);
 		fishLifeLab->setPosition(Vec2(140, 540));
 		fishLifeLab->setTag((int)ChildTag::LAB_FISH_LIFE);
 		fishLifeLab->enableOutline(Color4B::BLACK, 2);
@@ -153,11 +162,14 @@ bool GameLayer::init()
 		fishNode->addChild(player, 99999);
 		player->invincible();
 		
-		//配合过场的时间，所以延时执行这个方法
-		this->scheduleOnce(schedule_selector(GameLayer::gameStart), GAME_CONFIG_TRANSITION);
 		return true;
 	}
 	return false;
+}
+
+void GameLayer::onEnterTransitionDidFinish()
+{
+    this->gameStart();
 }
 
 Scene* GameLayer::createScene()
@@ -403,15 +415,24 @@ void GameLayer::update(float delay)
                                 title->setPosition(Vec2(clearNode->getContentSize().width / 2, 470));
                                 clearNode->addChild(title);
                                 
-                                Label *gameClearLab1 = Label::create(StringUtils::format("%i", this->m_eatFishTotalType1And2), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(500, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+                                Label *gameClearLab1 = Label::createWithSystemFont(StringUtils::format("%i", this->m_eatFishTotalType1And2), GAME_CONFIG_GLOBAL_FONTNAME_01, 30); //::create(, Size(), , );
+                                gameClearLab1->setDimensions(500, 40);
+                                gameClearLab1->setHorizontalAlignment(TextHAlignment::LEFT);
+                                gameClearLab1->setVerticalAlignment(TextVAlignment::CENTER);
                                 gameClearLab1->setPosition(Vec2(730, 330));
                                 clearNode->addChild(gameClearLab1);
                                 
-                                Label *gameClearLab2 = Label::create(StringUtils::format("%i", this->m_eatFishTotalType3), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(500, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+                                Label *gameClearLab2 = Label::createWithSystemFont(StringUtils::format("%i", this->m_eatFishTotalType3), GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
+                                gameClearLab2->setDimensions(500, 40);
+                                gameClearLab2->setHorizontalAlignment(TextHAlignment::LEFT);
+                                gameClearLab2->setVerticalAlignment(TextVAlignment::CENTER);
                                 gameClearLab2->setPosition(Vec2(730, 255));
                                 clearNode->addChild(gameClearLab2);
                                 
-                                Label *gameClearLab3 = Label::create(StringUtils::format("%i", this->m_eatFishTotalType4), GAME_CONFIG_GLOBAL_FONTNAME_01, 30, Size(500, 40), TextHAlignment::LEFT, TextVAlignment::CENTER);
+                                Label *gameClearLab3 = Label::createWithSystemFont(StringUtils::format("%i", this->m_eatFishTotalType4), GAME_CONFIG_GLOBAL_FONTNAME_01, 30);
+                                gameClearLab3->setDimensions(500, 40);
+                                gameClearLab3->setHorizontalAlignment(TextHAlignment::LEFT);
+                                gameClearLab3->setVerticalAlignment(TextVAlignment::CENTER);
                                 gameClearLab3->setPosition(Vec2(730, 180));
                                 clearNode->addChild(gameClearLab3);
                                 
@@ -862,7 +883,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     fishNode->addChild(player, 99999);
                     player->invincible();
                     
-                    this->gameStart(GAME_CONFIG_TRANSITION);
+                    this->gameStart();
                 }
                     break;
                 case ((int)ChildTag::BTN_RESTART):
@@ -904,7 +925,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
                     fishNode->addChild(player, 99999);
                     player->invincible();
                     
-                    this->gameStart(GAME_CONFIG_TRANSITION);
+                    this->gameStart();
                 }
                     break;
                 default:
@@ -920,7 +941,7 @@ void GameLayer::onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventT
 }
 
 //private
-void GameLayer::gameStart(float delay)
+void GameLayer::gameStart()
 {
 	SimpleAudioEngine::getInstance()->playEffect("audios_fishstart.mp3");
 

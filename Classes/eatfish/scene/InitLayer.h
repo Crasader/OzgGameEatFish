@@ -1,7 +1,7 @@
 #ifndef __OzgGameEatFish__InitLayer__
 #define __OzgGameEatFish__InitLayer__
 
-#include "BaseLayer.h"
+#include "eatfish/scene/BaseLayer.h"
 
 namespace eatfish
 {

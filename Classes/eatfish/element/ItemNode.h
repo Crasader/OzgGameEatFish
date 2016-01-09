@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
-#include "BaseNode.h"
+#include "eatfish/element/BaseNode.h"
 
 namespace eatfish
 {

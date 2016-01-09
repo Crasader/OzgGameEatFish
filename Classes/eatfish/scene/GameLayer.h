@@ -2,10 +2,10 @@
 #define __OzgGameEatFish__GameLayer__
 
 #include <iostream>
-#include "BaseLayer.h"
-#include "BaseFishNode.h"
-#include "EnemyFishNode.h"
-#include "ItemNode.h"
+#include "eatfish/scene/BaseLayer.h"
+#include "eatfish/element/BaseFishNode.h"
+#include "eatfish/element/EnemyFishNode.h"
+#include "eatfish/element/ItemNode.h"
 
 namespace eatfish
 {
@@ -39,7 +39,7 @@ private:
 
 	void onButton(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType eventType);
 	
-	void gameStart(float delay);
+	void gameStart();
 	void gameStartCallback();
 
 	void gameRestart(float delay);
@@ -95,7 +95,8 @@ public:
 
 	virtual ~GameLayer();
 	virtual bool init();
-
+    void onEnterTransitionDidFinish();
+    
 	CREATE_FUNC(GameLayer);
 	static cocos2d::Scene* createScene();
 

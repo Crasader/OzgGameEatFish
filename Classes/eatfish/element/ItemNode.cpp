@@ -1,7 +1,7 @@
 
-#include "ItemNode.h"
-#include "AnimData.h"
-#include "GameConfig.h"
+#include "eatfish/element/ItemNode.h"
+#include "eatfish/element/AnimData.h"
+#include "eatfish/GameConfig.h"
 
 USING_NS_CC;
 using namespace std;

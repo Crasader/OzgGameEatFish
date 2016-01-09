@@ -1,16 +1,17 @@
 #include "AppDelegate.h"
-#include "StartLayer.h"
-#include "InitLayer.h"
-#include "GameLayer.h"
-#include "GameConfig.h"
-#include "Strings.h"
+#include "eatfish/scene/StartLayer.h"
+#include "eatfish/scene/InitLayer.h"
+#include "eatfish/scene/GameLayer.h"
+#include "eatfish/GameConfig.h"
+#include "eatfish/Strings.h"
 #include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
+AppDelegate::AppDelegate()
+{
 
 }
 
@@ -36,11 +37,13 @@ static int register_all_packages()
     return 0; //flag for packages manager
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool AppDelegate::applicationDidFinishLaunching()
+{
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    if(!glview) {
+    if(!glview)
+    {
         glview = GLViewImpl::create("Eat Fish");
 		glview->setFrameSize(GAME_CONFIG_WINDOW_WIDTH, GAME_CONFIG_WINDOW_HEIGHT);
         director->setOpenGLView(glview);
@@ -80,7 +83,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
-void AppDelegate::applicationDidEnterBackground() {
+void AppDelegate::applicationDidEnterBackground()
+{
 	
 	Scene *s = Director::getInstance()->getRunningScene();
     for (int i = 0; i < (int)s->getChildren().size(); i++)
@@ -100,7 +104,8 @@ void AppDelegate::applicationDidEnterBackground() {
 }
 
 // this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground() {
+void AppDelegate::applicationWillEnterForeground()
+{
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
