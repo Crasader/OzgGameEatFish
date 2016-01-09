@@ -115,10 +115,6 @@ include_directories(
   ${COCOS2D_ROOT}/external
   ${COCOS2D_ROOT}/cocos/audio/include
   Classes
-  Classes/ozgcc
-  Classes/eatfish
-  Classes/eatfish/element
-  Classes/eatfish/scene
 )
 
 set(GAME_SRC
