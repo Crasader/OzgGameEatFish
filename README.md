@@ -18,14 +18,6 @@ linux平台直接在OzgGameEatFish目录下执行cocos compile -p linux -j 4，u
 
 ================
 
-本游戏的cocos2d-iphone版本：https://github.com/ouzhigang/ozggame_eat_fish
-
-本游戏的cocos2d-js版本：https://github.com/ouzhigang/OzgGameEatFishJS
-
-本游戏的swift版本：https://github.com/ouzhigang/OzgGameEatFishSwift
-
-================
-
 运行状况：
 
 ![](https://raw.github.com/ouzhigang/OzgGameEatFish/master/screenshot.jpg)
